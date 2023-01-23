@@ -4,6 +4,8 @@ import org.junit.Test;
 
 public class PetRockTest {
 
+  private PetRock SeSe = new PetRock("涩涩");
+
   @Test
   public void getName() throws Exception {
     PetRock EEOrSeSe = new PetRock("SeSe");
@@ -11,8 +13,12 @@ public class PetRockTest {
   }
 
   @Test
-  public void testHappy() {
-    PetRock SeSe = new PetRock("涩涩")
+  public void testUnhappyAtStart() {
     assertFalse(SeSe.isHappy());
+  }
+
+  public void testHappyAfterPlay(){
+    SeSe.playWithEE();
+    assertTrue(SeSe.isHappy());
   }
 }
