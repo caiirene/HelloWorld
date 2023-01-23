@@ -45,4 +45,8 @@ public class PetRock {
     x = null;
     return x;
   }
+
+  public String toString(){
+    return "Your Pet is " + this.name + ".\n It is unhappy at beginning. You can make it happy if you use playWithEE() method.";
+  }
 }

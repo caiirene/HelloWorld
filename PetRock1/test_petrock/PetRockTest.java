@@ -75,4 +75,10 @@ public class PetRockTest {
   public void testNotSameObject() {
     assertNotSame(EE, SeSe);
   }
+
+  @Test
+  public void testToString() {
+    String except = "Your Pet is 涩涩.\n It is unhappy at beginning. You can make it happy if you use playWithEE() method.";
+    assertEquals(except, SeSe.toString());
+  }
 }
