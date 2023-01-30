@@ -25,7 +25,7 @@ public class Rectangle implements Shape {
   @Override
   public double distanceFromOrigin() {
     return Math.sqrt(this.x * this.x + this.y * this.y);
-  }
+  }//Repetitive
 
   @Override
   public double area() {
@@ -58,7 +58,7 @@ public class Rectangle implements Shape {
       return 1;
     } else {
       return 0;
-    }
+    }//Repetitive
   }
 
   public String toString() {

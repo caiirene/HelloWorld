@@ -62,7 +62,7 @@ public class Circle implements Shape {
     } else {
       return 0;
     }
-  }
+  }//Repetitive
 
 
   public String toString() {
