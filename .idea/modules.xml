@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" filepath="$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Fraction/Fraction.iml" filepath="$PROJECT_DIR$/Fraction/Fraction.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelloWorld.iml" filepath="$PROJECT_DIR$/HelloWorld.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab02--withoutAbstructShape/Lab02--withoutAbstructShape.iml" filepath="$PROJECT_DIR$/Lab02--withoutAbstructShape/Lab02--withoutAbstructShape.iml" />
       <module fileurl="file://$PROJECT_DIR$/PetRock1/PetRock1.iml" filepath="$PROJECT_DIR$/PetRock1/PetRock1.iml" />
