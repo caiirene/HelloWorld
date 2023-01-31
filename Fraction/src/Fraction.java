@@ -27,6 +27,14 @@ public class Fraction {
     this.denominator = denominator;
   }
 
+  public int getNumerator() {
+    return this.numerator;
+  }
+
+  public int getDenominator() {
+    return this.denominator;
+  }
+
   private double getValue() {
     double a = this.numerator;
     double b = this.denominator;
@@ -92,5 +100,7 @@ public class Fraction {
     else if (this.getValue() < anotherFraction.getValue()) { return -1;}
     else { return 0;}
   }
+
+
 }
 

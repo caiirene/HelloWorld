@@ -82,6 +82,10 @@ public class ShapeTest {
     assertEquals(0.001*rect2.area(),resizedRect2.area(),0.001);
   }
 
+  @Test
+  public void testCompareTo() {
+    assertEquals(1, circle3.compareTo(circle1));
+  }
 
 
 }

@@ -1,17 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
-import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-import java.awt.desktop.UserSessionEvent;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.Timeout;
 
 public class FractionTest {
 
@@ -22,9 +12,9 @@ public class FractionTest {
     return gcd(b, a % b);
   }
 
-  /*测试所有分子，和正数分母*/
+  /*测试所有分子，和正数分母，使用constructor*/
   @Test
-  public void setUpGoodFraction() {
+  public void setUpGoodFractionByConstractor() {
     Fraction f;
     Random r = new Random();
     int n = 1000000; //这个是正数分母范围
@@ -38,11 +28,50 @@ public class FractionTest {
       int maxCommonDivider = gcd(a, b);
       int exceptA = a / maxCommonDivider;
       int exceptB = b / maxCommonDivider;
+
+      String except = "your fraction is " + exceptA + "/" + exceptB + ".";
+      assertEquals(except, f.toString());
+      assertEquals(a, f.getNumerator());
+      assertEquals(b, f.getDenominator());
     }
   }
 
-    @Test
-    public void setUpBadFraction() {
+
+  /*
+   *创建Fraction实例，新建实例为默认值（1/1）
+   * 检测使用setter
+   */
+  @Test
+  public void setUpGoodFractionBySetters() {
+    Fraction f;
+    Random r = new Random();
+    int n = 1000000;
+    f = new Fraction(); //这个是默认分数
+
+    for (int i = 0; i < 10000; i++) {
+      int a = r.nextInt();
+      //System.out.println(a);
+      int b = r.nextInt(n) + 1; //避免出现0
+      f.setNumerator(a);
+      f.setDenominator(b);
+
+      int maxCommonDivider = gcd(a, b);
+      int exceptA = a / maxCommonDivider;
+      int exceptB = b / maxCommonDivider;
+
+      String except = "your fraction is " + exceptA + "/" + exceptB + ".";
+      assertEquals(except, f.toString());
+      assertEquals(a, f.getNumerator());
+      assertEquals(b, f.getDenominator());
+    }
+  }
+
+  /*
+   * 测试负数分母和0分母
+   *
+   */
+    @Test (expected = IllegalArgumentException.class)
+    public void setUpBadFraction() throws Exception {
       Fraction f;
       Random r = new Random();
       int n = 1000000; //这个是正数分母范围
@@ -50,7 +79,7 @@ public class FractionTest {
       for (int i = 0; i < 10000; i++) {
         int a = r.nextInt();
         //System.out.println(a);
-        int b = -(r.nextInt(n));
+        int b = -(r.nextInt(n)); //这里包含0
         f = new Fraction(a, b);
 
         int maxCommonDivider = gcd(a, b);
@@ -58,6 +87,26 @@ public class FractionTest {
         int exceptB = b / maxCommonDivider;
       }
     }
+
+  /*
+   * 倒数method检测
+   *
+   */
+  public void reciprocal() {
+    Fraction f;
+    Random r = new Random();
+    int n = 1000000; //这个是正数分母范围
+
+    for (int i = 0; i < 10000; i++) {
+      int a = r.nextInt();
+      //System.out.println(a);
+      int b = r.nextInt(n) + 1; //避免出现0
+      f = new Fraction(a, b);
+
+      if (a)
+    }
+
+  }
 
 
 
