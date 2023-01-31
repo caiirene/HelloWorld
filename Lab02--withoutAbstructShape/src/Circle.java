@@ -29,27 +29,50 @@ public class Circle implements Shape {
     this.radius = radius;
   }
 
+  /*
+   * Return the area of circle by it own radius
+   * @return the area of this circle
+   */
   @Override
   public double area() {
     return Math.PI * radius * radius;
   }
 
+  /*
+   * Return the perimeter of circle by it own radius
+   * @return the perimeter of this circle
+   */
   @Override
   public double perimeter() {
     return 2 * Math.PI * radius;
   }
 
+  /*
+   * take 几倍 as factor, which means a bigger circle should be created
+   * Return a new Circle object
+   * @return Circle object
+   */
   @Override
   public Shape resize(double factor) {
     return new Circle(this.centerx, this.centery, Math.sqrt(factor) * radius);
   }
 
+  /*
+   * Return the distance between center and Origin
+   * @return the distance
+   */
   @Override
   public double distanceFromOrigin() {
     return Math.sqrt(this.centerx * this.centerx + this.centery * this.centery);
   }
   //Repetitive
 
+  /*
+   * we need two objects for this methods
+   * Return -1 if this circle's area is smaller than the compare one
+   * Return 1 if this circle's area is bigger than the compare one
+   * Return 0 if this circle's area is equal than the compare one
+   */
   @Override
   public int compareTo(Shape s) {
     double areaThis = this.area();

@@ -22,21 +22,38 @@ public class Rectangle implements Shape {
     this.height = height;
   }
 
+  /*
+   * Return the distance between LL coner and Origin
+   * @return the distance
+   */
   @Override
   public double distanceFromOrigin() {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   }//Repetitive
 
+  /*
+   * Return the area of rectangle by it own radius
+   * @return the area of this rectangle
+   */
   @Override
   public double area() {
     return this.width * this.height;
   }
 
+  /*
+   * Return the perimeter of rectangle by it own h/w
+   * @return the perimeter of this rectangle
+   */
   @Override
   public double perimeter() {
     return 2 * (this.width + this.height);
   }
 
+  /*
+   * take 几倍 as factor, which means a bigger circle should be created
+   * Return a new Rectangle object
+   * @return Rectangle object
+   */
   @Override
   public Shape resize(double factor) {
     double sqrtFactor = Math.sqrt(factor);
@@ -47,6 +64,12 @@ public class Rectangle implements Shape {
         sqrtFactor * this.height);
   }
 
+  /*
+   * we need two objects for this methods
+   * Return -1 if this Rectangle's area is smaller than the compare one
+   * Return 1 if this Rectangle's area is bigger than the compare one
+   * Return 0 if this Rectangle's area is equal than the compare one
+   */
   @Override
   public int compareTo(Shape s) {
     double areaThis = this.area();
