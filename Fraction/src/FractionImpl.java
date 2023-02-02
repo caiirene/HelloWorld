@@ -10,6 +10,17 @@ public class FractionImpl implements Fraction {
   private double bigDenominator;
   */
 
+
+  /**
+   * this is the usual constructor for this fraction obejct
+   * it has a int numo and a int deno
+   * and that's all
+   *
+   * @param x x will become numo
+   * @param y y will becom deno
+   * @throws IllegalArgumentException if deno is zero, and we don't allow negetive deno as well
+   * thank you !!!
+   */
   public FractionImpl(int x, int y) throws IllegalArgumentException {
     if (y <= 0) {
       throw new IllegalArgumentException();
@@ -18,7 +29,11 @@ public class FractionImpl implements Fraction {
     this.denominator = y;
   }
 
-
+  /**
+   * this is a default construction that you don't need to input
+   * parameter at all.
+   * so it will automaticly give you a fraction of 1/1
+   */
   public FractionImpl() {
     this.numerator = 1;
     this.denominator = 1;

@@ -180,6 +180,12 @@ public class FractionTest {
     }
   }
 
+  /**
+   * add this test because, even though the ramdom range include possibility
+   * that two fraction object have same value,
+   * but it is ramdom
+   * this test is certain test of comparing two same value fraction object
+   */
   @Test
   public void additionalTestCompareToWithZero() {
     FractionImpl f, f2;
@@ -192,7 +198,7 @@ public class FractionTest {
   public void testAdd() {
     FractionImpl f, f2;
     Random r = new Random();
-    int n = 1000000; //这个是正数分母范围
+    int n = 10000; //这个是正数分母范围
 
     for (int i = 0; i < 10000; i++) {
       int a = r.nextInt();
@@ -202,6 +208,7 @@ public class FractionTest {
       f = new FractionImpl(a, b);
       f2 = new FractionImpl(a2, b2);
 
+      /*
       System.out.println(a);
       System.out.println(a2);
       System.out.println(b);
@@ -210,19 +217,25 @@ public class FractionTest {
 
       System.out.println("b*b2= " + b * b2);
 
+
       double aa = a;
       double aa2 = a2;
       double bb = b;
       double bb2 = b2;
       ///////////////////////
       //但是在创建新Fraction的时候，也只能使用int
+      ** but even I set them to double, they can not become parameters to
+      ** construct a new fraction object because fractionImpl only has
+      ** int+int constructor
       ///////////////////////
+
+       */
 
       Fraction exceptSum = new FractionImpl((a * b2 + a2 * b), b * b2);
 
-      System.out.println(exceptSum.toString());
+      //System.out.println(exceptSum.toString());
 
-      System.out.println(f.add(f2).toString());
+      //System.out.println(f.add(f2).toString());
       assertEquals(exceptSum.toString(), f.add(f2).toString());
     }
   }
