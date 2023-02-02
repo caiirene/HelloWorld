@@ -5,6 +5,11 @@ public class FractionImpl implements Fraction {
   private int numerator;
   private int denominator;
 
+  /*
+  private double bigNumerator;
+  private double bigDenominator;
+  */
+
   public FractionImpl(int x, int y) throws IllegalArgumentException {
     if (y <= 0) {
       throw new IllegalArgumentException();

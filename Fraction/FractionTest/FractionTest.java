@@ -137,6 +137,12 @@ public class FractionTest {
     }
   }
 
+  @Test (expected = IllegalArgumentException.class)
+  public void additionalReciprocalWithZeroAsNumo() {
+    Fraction f = new FractionImpl(0,2);
+    f.reciprocal();
+  }
+
   @Test
   public void testCompareTo() {
     FractionImpl f, f2;
@@ -148,13 +154,13 @@ public class FractionTest {
       int b = r.nextInt(n) + 1; //避免出现0
       int a2 = r.nextInt();
       int b2 = r.nextInt(n) + 1;
-      System.out.println(a);
+      /*System.out.println(a);
       System.out.println(a2);
       System.out.println(b);
-      System.out.println(b2);
+      System.out.println(b2);*/
       f = new FractionImpl(a, b);
       f2 = new FractionImpl(a2, b2);
-      System.out.println(f.toString() + f2.toString());
+      //System.out.println(f.toString() + f2.toString());
 
       double aa = a;
       double aa2 = a2;
@@ -172,6 +178,14 @@ public class FractionTest {
         assertEquals(0, f.compareTo(f2));
       }
     }
+  }
+
+  @Test
+  public void additionalTestCompareToWithZero() {
+    FractionImpl f, f2;
+    f = new FractionImpl(2, 4);
+    f2 = new FractionImpl(1, 2);
+    assertEquals(0, f.compareTo(f2));
   }
 
   @Test
@@ -213,48 +227,5 @@ public class FractionTest {
     }
   }
 
-
-
-
 }
 
-
-
-
-
-
-
-
-
-/*
-  @Test
-  public void setNumerator() {
-
-  }
-
-  @Test
-  public void setDenominator() {
-  }
-
-  @Test
-  public void toDouble() {
-  }
-
-  @Test
-  public void testToString() {
-  }
-
-  @Test
-  public void reciprocal() {
-  }
-
-  @Test
-  public void add() {
-  }
-
-  @Test
-  public void compareTo() {
-  }
-}
-
- */
