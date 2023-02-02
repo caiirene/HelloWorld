@@ -1,3 +1,5 @@
+package listadt;
+
 import java.util.function.Function;
 
 /**

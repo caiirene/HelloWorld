@@ -84,7 +84,7 @@ public class ShapeTest {
 
   @Test
   public void testCompareTo() {
-    assertEquals(1, circle3.compareTo(circle1));
+    assertEquals(1, circle3.compareTo(rect1));
   }
 
 

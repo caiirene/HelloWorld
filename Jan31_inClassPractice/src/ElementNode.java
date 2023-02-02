@@ -15,6 +15,10 @@ public class ElementNode implements IListOfBooks {
     this.rest = rest;
   }
 
+  /*
+  public int count() {return 1 + this.rest.count();}
+  */
+
   @Override
   //public int count() { return 1+this.rest.count();}
   public int count() { return countHelp(0);}

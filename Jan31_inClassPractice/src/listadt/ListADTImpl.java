@@ -1,8 +1,10 @@
+package listadt;
+
 import java.util.function.Function;
 
 /**
  * This is the implementation of a generic list. Specifically it implements
- * the listadt.ListADT interface
+ * the listadt.listadt.ListADT interface
  */
 public class ListADTImpl<T> implements ListADT<T> {
   private GenericListADTNode<T> head;

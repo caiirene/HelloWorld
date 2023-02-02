@@ -1,14 +1,11 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import static org.junit.Assert.*;
 import listadt.*;
 
 /**
- * Tests the listadt.ListADT implementation using a list of strings
+ * Tests the listadt.listadt.ListADT implementation using a list of strings
  */
 public class ListADTTest {
 
