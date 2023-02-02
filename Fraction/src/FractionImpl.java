@@ -39,10 +39,12 @@ public class FractionImpl implements Fraction {
     this.denominator = 1;
   }
 
+  @Override
   public void setNumerator(int numerator) {
     this.numerator = numerator;
   }
 
+  @Override
   public void setDenominator(int denominator) throws IllegalArgumentException {
     if (denominator <= 0) {
       throw new IllegalArgumentException();

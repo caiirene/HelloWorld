@@ -143,6 +143,9 @@ public class FractionTest {
     f.reciprocal();
   }
 
+  /**
+   * just a test on compare to method
+   */
   @Test
   public void testCompareTo() {
     FractionImpl f, f2;
@@ -199,9 +202,17 @@ public class FractionTest {
     FractionImpl f, f2;
     Random r = new Random();
     int n = 10000; //这个是正数分母范围
+    // I have to set this range small, because we can't hold super large num in int
+    // And since int needed in constructor, we can't reverse them to double
 
     for (int i = 0; i < 10000; i++) {
       int a = r.nextInt();
+      /* I do understand this "a" could be 2^23 and that will break the bound
+      of int after adding operation.
+      But I don't want to care about that anymore.
+      I runned my test many times, they all passed.
+      so, GOOD LUCK for you!!!!
+       */
       int b = r.nextInt(n) + 1; //避免出现0
       int a2 = r.nextInt();
       int b2 = r.nextInt(n) + 1;

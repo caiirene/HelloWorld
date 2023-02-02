@@ -2,6 +2,18 @@ public interface Fraction extends Comparable<Fraction> {
 
 
   /**
+   * reset the numo for this fraction object
+   * @param x an int that will become the new numo
+   */
+  void setNumerator(int x);
+
+  /**
+   * reset the deno for this fraction object
+   * @param x an int that will become the new deno
+   */
+  void setDenominator(int x);
+
+  /**
    * return the numo of this fraction object
    *
    * @return an int, the numo
