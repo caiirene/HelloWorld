@@ -133,7 +133,7 @@ public class FractionTest {
         assertEquals(exceptFraction.toString(), f.reciprocal().toString());
       } else {
         assertEquals(new IllegalArgumentException(), new FractionImpl(b, a));
-      }
+      } // It is possible that a=0, although a is ramdom.
     }
   }
 
@@ -156,11 +156,16 @@ public class FractionTest {
       f2 = new FractionImpl(a2, b2);
       System.out.println(f.toString() + f2.toString());
 
+      double aa = a;
+      double aa2 = a2;
+      double bb = b;
+      double bb2 = b2;
+
       //f大于f2
-      if ((a * b2) > (a2 * b)) {
+      if ((aa * bb2) > (aa2 * bb)) {
         assertEquals(1, f.compareTo(f2));
       }
-      else if ((a * b2) < (a2 * b)) {
+      else if ((aa * bb2) < (aa2 * bb)) {
         assertEquals(-1, f.compareTo(f2));
       }
       else {
@@ -190,6 +195,14 @@ public class FractionTest {
       System.out.println(f.toString() + f2.toString());
 
       System.out.println("b*b2= " + b * b2);
+
+      double aa = a;
+      double aa2 = a2;
+      double bb = b;
+      double bb2 = b2;
+      ///////////////////////
+      //但是在创建新Fraction的时候，也只能使用int
+      ///////////////////////
 
       Fraction exceptSum = new FractionImpl((a * b2 + a2 * b), b * b2);
 
