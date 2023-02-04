@@ -14,28 +14,33 @@ public class FractionTest {
 
   /**
    * 测试所有分子，和正数分母，使用constructor
+   * all positive deno and all possible
+   * without 0 as deno
    */
   @Test
   public void setUpGoodFractionByConstractorTestFractionItself() {
-    Fraction f;
+    Fraction myFraction;
     Random r = new Random();
     int n = 1000000; //这个是正数分母范围
 
     for (int i = 0; i < 10000; i++) {
-      int a = r.nextInt();
-      //System.out.println(a);
-      int b = r.nextInt(n) + 1; //避免出现0
-      f = new FractionImpl(a, b);
+      int aNumo = r.nextInt();
+      int bDeno = r.nextInt(n) + 1; //避免出现0
 
-      int maxCommonDivider = gcd(a, b);
-      if (maxCommonDivider < 0 ) {maxCommonDivider = -maxCommonDivider;}
-      int exceptA = a / maxCommonDivider;
-      int exceptB = b / maxCommonDivider;
+      //System.out.println(aNumo + " <-> " + bDeno + " <-> " + i);
+      myFraction = new FractionImpl(aNumo, bDeno);
+
+      int maxCommonDivider = gcd(aNumo, bDeno);
+      if (maxCommonDivider < 0) {
+        maxCommonDivider = -maxCommonDivider;
+      }
+      int exceptA = aNumo / maxCommonDivider;
+      int exceptB = bDeno / maxCommonDivider;
 
       String except = "your fraction is " + exceptA + "/" + exceptB + ".";
-      assertEquals(except, f.toString());
-      assertEquals(a, f.getNumerator());
-      assertEquals(b, f.getDenominator());
+      assertEquals(except, myFraction.toString());
+      assertEquals(aNumo, myFraction.getNumerator());
+      assertEquals(bDeno, myFraction.getDenominator());
     }
   }
 
