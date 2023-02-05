@@ -11,8 +11,18 @@ public class NommalNode implements IListOfInts {
 
   @Override
   public IListOfInts addAtIndex(int data, int index) {
-    if (index == 0) {return new NommalNode(data, this);}
-    else {return new NommalNode(this.data, this.rest.addAtIndex(data, index-1));}
+    if (index == 0) {
+      IListOfInts remember;
+      remember = new NommalNode(this.data, this.rest);
+      this.data = data;
+      this.rest = remember;}
+      //this.rest = new NommalNode(data, this.rest);}
+      //return new NommalNode(data, this);}
+    else {
+      this.rest.addAtIndex(data,index-1);}
+
+    return this;
+      //return new NommalNode(this.data, this.rest.addAtIndex(data, index-1));}
   }
 
   @Override

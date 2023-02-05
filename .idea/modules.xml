@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" filepath="$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/Fraction/Fraction.iml" filepath="$PROJECT_DIR$/Fraction/Fraction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HW02_Chess/HW02_Chess.iml" filepath="$PROJECT_DIR$/HW02_Chess/HW02_Chess.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelloWorld.iml" filepath="$PROJECT_DIR$/HelloWorld.iml" />
       <module fileurl="file://$PROJECT_DIR$/Jan31_inClassPractice/Jan31_inClassPractice.iml" filepath="$PROJECT_DIR$/Jan31_inClassPractice/Jan31_inClassPractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab02--withoutAbstructShape/Lab02--withoutAbstructShape.iml" filepath="$PROJECT_DIR$/Lab02--withoutAbstructShape/Lab02--withoutAbstructShape.iml" />

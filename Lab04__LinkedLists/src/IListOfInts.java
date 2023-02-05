@@ -14,6 +14,10 @@ public interface IListOfInts {
 
   int getDataAtIndex(int index);
 
+  /**
+   *
+   * @return
+   */
   int count();
 
   int sum();
