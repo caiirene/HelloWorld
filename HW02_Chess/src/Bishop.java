@@ -21,7 +21,7 @@ public class Bishop extends AbstractChessPiece {
   @Override
   public boolean canKill(ChessPiece another) {
     boolean bishopCanKill;
-    return (this.canMove(another.getRow(), another.getColoum()) && this.color != another.getBW());
+    return (this.canMove(another.getRow(), another.getColoum()) && this.getBW() != another.getBW());
   }
 
 
