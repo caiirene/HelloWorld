@@ -4,11 +4,15 @@ public abstract class AbstractChessPiece implements ChessPiece {
   protected int rowPos;
   protected int coloumPos;
 
+  protected Type chessType;
 
-  public AbstractChessPiece(int x, int y, BW blackOrWhite) {
+
+  public AbstractChessPiece(int x, int y, BW blackOrWhite, Type chessType) {
+    checkIndex(x, y);
     this.rowPos = x;
     this.coloumPos = y;
     this.color = blackOrWhite;
+    this.chessType = chessType;
   }
 
   @Override
@@ -24,6 +28,53 @@ public abstract class AbstractChessPiece implements ChessPiece {
   @Override
   public BW getBW() {
     return this.color;
+  }
+
+  protected void checkIndex(int x, int y) {
+    if ((x >= 8) || y >= 8 || 0 > x || 0 > y) {
+      throw new IllegalArgumentException();
+    }
+    return;
+  }
+
+  public String toString() {
+    String thisType;
+    switch (this.chessType) {
+      case PAWN:
+        thisType = "pawn";
+        break;
+      case QUEEN:
+        thisType = "queen";
+        break;
+      case ROOK:
+        thisType = "rook";
+        break;
+      case BISHOP:
+        thisType = "bishop";
+        break;
+      case KNIGHT:
+        thisType = "knight";
+        break;
+      default:
+        thisType = "unknow";
+        break;
+    }
+    String bw;
+    switch (color) {
+      case BLACK:
+        bw = "black";
+        break;
+      case WHITE:
+        bw = "white";
+        break;
+      default:
+        bw = "unknow";
+        break;
+    }
+    String str = "this piece is a " + bw + " " + thisType + " in position (" + this.rowPos + ","
+        + this.coloumPos + ")\n";
+    System.out.println(str);
+    return str;
   }
 
 }

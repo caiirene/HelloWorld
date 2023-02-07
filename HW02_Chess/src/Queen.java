@@ -4,16 +4,17 @@ public class Queen extends AbstractChessPiece {
 
 
   public Queen (int x, int y, BW color) {
-    super(x,y,color);
+    super(x,y,color, Type.QUEEN);
   }
 
 
   @Override
   public boolean canMove(int x, int y) {
-    if ((x>=8) || y>=8 || 0>x || 0>y) {throw new IllegalArgumentException();}
+    checkIndex(x,y);
     boolean bishopCanMove = false;
     if (abs(x-this.getRow()) == abs(y-this.getColoum())) { bishopCanMove = true;}
     if (x == this.getRow() || y == this.getColoum()) {bishopCanMove = true;}
+    if (x == this.getRow() && y == this.getColoum()) {bishopCanMove = false;}
     return bishopCanMove;
   }
 

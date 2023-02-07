@@ -3,15 +3,15 @@ public class Rook extends AbstractChessPiece {
 
 
   public Rook(int x, int y, BW blackOrWhite) {
-    super(x,y,blackOrWhite);
+    super(x,y,blackOrWhite, Type.ROOK);
   }
 
 
   @Override
   public boolean canMove(int x, int y) {
-    if ((x>=8) || y>=8 || 0>x || 0>y) {throw new IllegalArgumentException();}
-    boolean RookCanMove = true;
-    if (x != this.getRow() && y != this.getColoum()) {RookCanMove = false;}
+    checkIndex(x,y);
+    boolean RookCanMove = false;
+    if (x == this.getRow() || y == this.getColoum()) {RookCanMove = true;}
     if (x == this.getRow() && y == this.getColoum()) {RookCanMove = false;}
     return RookCanMove;
   }

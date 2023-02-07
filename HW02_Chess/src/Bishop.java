@@ -4,13 +4,13 @@ public class Bishop extends AbstractChessPiece {
 
 
   public Bishop (int x, int y, BW color) {
-    super(x,y,color);
+    super(x,y,color,Type.BISHOP);
   }
 
 
   @Override
   public boolean canMove(int x, int y) {
-    if ((x>=8) || y>=8 || 0>x || 0>y) {throw new IllegalArgumentException();}
+    checkIndex(x,y);
     boolean bishopCanMove;
     if (abs(x-this.getRow()) == abs(y-this.getColoum())) { bishopCanMove = true;}
     else {bishopCanMove = false;}
