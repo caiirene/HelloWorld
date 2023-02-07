@@ -1,5 +1,13 @@
 import static java.lang.Math.abs;
 
+/**
+ * this construct an object of bishop chess
+ * at x,y position
+ * and color in your choice
+ * @param x pos
+ * @param y pos
+ * @return object
+ */
 public class Pawn extends AbstractChessPiece {
 
   public Pawn(int x, int y, BW blackOrWhite) {

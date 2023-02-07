@@ -2,7 +2,14 @@ import static java.lang.Math.abs;
 
 public class Queen extends AbstractChessPiece {
 
-
+  /**
+   * this construct an object of bishop chess
+   * at x,y position
+   * and color in your choice
+   * @param x pos
+   * @param y pos
+   * @return object
+   */
   public Queen (int x, int y, BW color) {
     super(x,y,color, Type.QUEEN);
   }

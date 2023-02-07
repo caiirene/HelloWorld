@@ -1,7 +1,14 @@
 import static java.lang.Math.abs;
 public class Rook extends AbstractChessPiece {
 
-
+  /**
+   * this construct an object of bishop chess
+   * at x,y position
+   * and color in your choice
+   * @param x pos
+   * @param y pos
+   * @return object
+   */
   public Rook(int x, int y, BW blackOrWhite) {
     super(x,y,blackOrWhite, Type.ROOK);
   }

@@ -8,6 +8,14 @@ public class Bishop extends AbstractChessPiece {
   }
 
 
+  /**
+   * this construct an object of bishop chess
+   * at x,y position
+   * and color in your choice
+   * @param x pos
+   * @param y pos
+   * @return object
+   */
   @Override
   public boolean canMove(int x, int y) {
     checkIndex(x,y);
