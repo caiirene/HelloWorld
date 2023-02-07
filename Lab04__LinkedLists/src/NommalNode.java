@@ -15,30 +15,43 @@ public class NommalNode implements IListOfInts {
       IListOfInts remember;
       remember = new NommalNode(this.data, this.rest);
       this.data = data;
-      this.rest = remember;}
-      //this.rest = new NommalNode(data, this.rest);}
-      //return new NommalNode(data, this);}
+      this.rest = remember;
+    }
+    //this.rest = new NommalNode(data, this.rest);}
+    //return new NommalNode(data, this);}
     else {
-      this.rest.addAtIndex(data,index-1);}
+      this.rest.addAtIndex(data, index - 1);
+    }
 
     return this;
-      //return new NommalNode(this.data, this.rest.addAtIndex(data, index-1));}
+    //return new NommalNode(this.data, this.rest.addAtIndex(data, index-1));}
   }
 
   @Override
   public IListOfInts addFront(int data) {
-    return new NommalNode(data, this);
+    IListOfInts remeber = new NommalNode(this.data, this.rest);
+    //System.out.println(remeber.toString());
+    this.data = data;
+    this.rest = remeber;
+    return this;
   }
+
+    //return new NommalNode(data, this);}
 
   @Override
   public IListOfInts addBack(int data) {
-    return new NommalNode(this.data, this.rest.addBack(data));
+    this.rest = this.rest.addBack(data);
+    return this;
+    //return new NommalNode(this.data, this.rest.addBack(data));
   }
 
   @Override
   public int getDataAtIndex(int index) {
-    if (index == 0) {return this.data;}
-    else {return this.rest.getDataAtIndex(index-1);}
+    if (index == 0) {
+      return this.data;
+    } else {
+      return this.rest.getDataAtIndex(index - 1);
+    }
   }
 
   public int count() {

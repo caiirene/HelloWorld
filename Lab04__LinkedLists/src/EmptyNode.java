@@ -4,7 +4,10 @@ public class EmptyNode implements IListOfInts {
 
   @Override
   public IListOfInts addAtIndex(int data, int index) {
-    return new NommalNode(data, this);
+    if (index == 0) {
+      return new NommalNode(data, this);
+    }
+    else {throw new IllegalArgumentException();}
   }
 
   @Override
@@ -20,7 +23,7 @@ public class EmptyNode implements IListOfInts {
   @Override
   public int getDataAtIndex(int index) {
     System.out.println("no such index, just return 0.\n");
-    return 0;
+    throw new IllegalArgumentException();
   }
 
 
