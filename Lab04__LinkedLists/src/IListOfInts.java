@@ -1,3 +1,6 @@
+/**
+ * THIS IS A STRUCTURE OF LINKED LIST
+ */
 public interface IListOfInts {
 
   /**
