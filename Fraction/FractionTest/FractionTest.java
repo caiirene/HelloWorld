@@ -50,27 +50,27 @@ public class FractionTest {
    */
   @Test
   public void setUpGoodFractionBySettersTestFractionItself() {
-    FractionImpl f;
-    Random r = new Random();
+    FractionImpl myFraction;
+    Random myRandomNum = new Random();
     int n = 1000000;
-    f = new FractionImpl(); //这个是默认分数
+    myFraction = new FractionImpl(); //这个是默认分数
 
     for (int i = 0; i < 10000; i++) {
-      int a = r.nextInt();
+      int aNumo = myRandomNum.nextInt();
       //System.out.println(a);
-      int b = r.nextInt(n) + 1; //避免出现0
-      f.setNumerator(a);
-      f.setDenominator(b);
+      int bDeno = myRandomNum.nextInt(n) + 1; //避免出现0
+      myFraction.setNumerator(aNumo);
+      myFraction.setDenominator(bDeno);
 
-      int maxCommonDivider = gcd(a, b);
+      int maxCommonDivider = gcd(aNumo, bDeno);
       if (maxCommonDivider < 0 ) {maxCommonDivider = -maxCommonDivider;}
-      int exceptA = a / maxCommonDivider;
-      int exceptB = b / maxCommonDivider;
+      int exceptA = aNumo / maxCommonDivider;
+      int exceptB = bDeno / maxCommonDivider;
 
       String except = "your fraction is " + exceptA + "/" + exceptB + ".";
-      assertEquals(except, f.toString());
-      assertEquals(a, f.getNumerator());
-      assertEquals(b, f.getDenominator());
+      assertEquals(except, myFraction.toString());
+      assertEquals(aNumo, myFraction.getNumerator());
+      assertEquals(bDeno, myFraction.getDenominator());
     }
   }
 
@@ -79,15 +79,15 @@ public class FractionTest {
    */
   @Test(expected = IllegalArgumentException.class)
   public void setUpBadFractionByConstructorTestFractionItself() throws Exception {
-    FractionImpl f;
-    Random r = new Random();
-    int n = 1000000; //这个是正数分母范围
+    FractionImpl myFraction;
+    Random myRandomObject = new Random();
+    int rangeForNumo = 1000000; //这个是正数分母范围
 
     for (int i = 0; i < 10000; i++) {
-      int a = r.nextInt();
+      int a = myRandomObject.nextInt();
       //System.out.println(a);
-      int b = -(r.nextInt(n)); //这里包含0
-      f = new FractionImpl(a, b);
+      int b = -(myRandomObject.nextInt(rangeForNumo)); //这里包含0
+      myFraction = new FractionImpl(a, b);
     }
   }
 
@@ -97,17 +97,17 @@ public class FractionTest {
    */
   @Test(expected = IllegalArgumentException.class)
   public void setUpBadFractionBySetterTestFractionItself() throws Exception {
-    FractionImpl f;
-    Random r = new Random();
-    int n = 1000000; //这个是正数分母范围
+    FractionImpl myFraction;
+    Random myRandomObject = new Random();
+    int rangeForPositiveDeno = 1000000; //这个是正数分母范围
 
     for (int i = 0; i < 10000; i++) {
-      int a = r.nextInt();
+      int a = myRandomObject.nextInt();
       //System.out.println(a);
-      int b = -(r.nextInt(n)); //这里包含0
-      f = new FractionImpl();
-      f.setNumerator(a);
-      f.setDenominator(b);
+      int b = -(myRandomObject.nextInt(rangeForPositiveDeno)); //这里包含0
+      myFraction = new FractionImpl();
+      myFraction.setNumerator(a);
+      myFraction.setDenominator(b);
     }
   }
 
@@ -116,26 +116,26 @@ public class FractionTest {
    */
   @Test
   public void reciprocal() {
-    FractionImpl f;
-    Random r = new Random();
-    int n = 1000000; //这个是正数分母范围
+    FractionImpl myFraction;
+    Random myRandomObject = new Random();
+    int rangeForPostiveDeno = 1000000; //这个是正数分母范围
 
     for (int i = 0; i < 10000; i++) {
-      int a = r.nextInt();
+      int a = myRandomObject.nextInt();
       //System.out.println(a);
-      int b = r.nextInt(n) + 1; //避免出现0
-      f = new FractionImpl(a, b);
+      int b = myRandomObject.nextInt(rangeForPostiveDeno) + 1; //避免出现0
+      myFraction = new FractionImpl(a, b);
 
       if (a > 0) {
         int exceptDeno = a;
         int exceptNumo = b;
         Fraction exceptFraction = new FractionImpl(exceptNumo, exceptDeno);
-        assertEquals(exceptFraction.toString(), f.reciprocal().toString());
+        assertEquals(exceptFraction.toString(), myFraction.reciprocal().toString());
       } else if (a < 0) {
         int exceptDeno = -a;
         int exceptNumo = -b;
         Fraction exceptFraction = new FractionImpl(exceptNumo, exceptDeno);
-        assertEquals(exceptFraction.toString(), f.reciprocal().toString());
+        assertEquals(exceptFraction.toString(), myFraction.reciprocal().toString());
       } else {
         assertEquals(new IllegalArgumentException(), new FractionImpl(b, a));
       } // It is possible that a=0, although a is ramdom.
@@ -153,37 +153,37 @@ public class FractionTest {
    */
   @Test
   public void testCompareTo() {
-    FractionImpl f, f2;
-    Random r = new Random();
+    FractionImpl myFraction_1, myFraction_2;
+    Random myRandomObject = new Random();
     int n = 1000000; //这个是正数分母范围
 
     for (int i = 0; i < 10000; i++) {
-      int a = r.nextInt();
-      int b = r.nextInt(n) + 1; //避免出现0
-      int a2 = r.nextInt();
-      int b2 = r.nextInt(n) + 1;
-      /*System.out.println(a);
-      System.out.println(a2);
-      System.out.println(b);
-      System.out.println(b2);*/
-      f = new FractionImpl(a, b);
-      f2 = new FractionImpl(a2, b2);
-      //System.out.println(f.toString() + f2.toString());
+      int aNumoFor_f1 = myRandomObject.nextInt();
+      int bDenoFor_f1 = myRandomObject.nextInt(n) + 1; //避免出现0
+      int a2NumoFor_f2 = myRandomObject.nextInt();
+      int b2DenoFor_f2 = myRandomObject.nextInt(n) + 1;
+      /*System.out.println(aNumoFor_f1);
+      System.out.println(a2NumoFor_f2);
+      System.out.println(bDenoFor_f1);
+      System.out.println(b2DenoFor_f2);*/
+      myFraction_1 = new FractionImpl(aNumoFor_f1, bDenoFor_f1);
+      myFraction_2 = new FractionImpl(a2NumoFor_f2, b2DenoFor_f2);
+      //System.out.println(myFraction_1.toString() + myFraction_2.toString());
 
-      double aa = a;
-      double aa2 = a2;
-      double bb = b;
-      double bb2 = b2;
+      double aa = aNumoFor_f1;
+      double aa2 = a2NumoFor_f2;
+      double bb = bDenoFor_f1;
+      double bb2 = b2DenoFor_f2;
 
       //f大于f2
       if ((aa * bb2) > (aa2 * bb)) {
-        assertEquals(1, f.compareTo(f2));
+        assertEquals(1, myFraction_1.compareTo(myFraction_2));
       }
       else if ((aa * bb2) < (aa2 * bb)) {
-        assertEquals(-1, f.compareTo(f2));
+        assertEquals(-1, myFraction_1.compareTo(myFraction_2));
       }
       else {
-        assertEquals(0, f.compareTo(f2));
+        assertEquals(0, myFraction_1.compareTo(myFraction_2));
       }
     }
   }
@@ -204,7 +204,7 @@ public class FractionTest {
 
   @Test
   public void testAdd() {
-    FractionImpl f, f2;
+    FractionImpl myFraction_1, myFraction_2;
     Random r = new Random();
     int n = 10000; //这个是正数分母范围
     // I have to set this range small, because we can't hold super large num in int
@@ -221,15 +221,15 @@ public class FractionTest {
       int b = r.nextInt(n) + 1; //避免出现0
       int a2 = r.nextInt();
       int b2 = r.nextInt(n) + 1;
-      f = new FractionImpl(a, b);
-      f2 = new FractionImpl(a2, b2);
+      myFraction_1 = new FractionImpl(a, b);
+      myFraction_2 = new FractionImpl(a2, b2);
 
       /*
       System.out.println(a);
       System.out.println(a2);
       System.out.println(b);
       System.out.println(b2);
-      System.out.println(f.toString() + f2.toString());
+      System.out.println(myFraction_1.toString() + myFraction_2.toString());
 
       System.out.println("b*b2= " + b * b2);
 
@@ -251,8 +251,8 @@ public class FractionTest {
 
       //System.out.println(exceptSum.toString());
 
-      //System.out.println(f.add(f2).toString());
-      assertEquals(exceptSum.toString(), f.add(f2).toString());
+      //System.out.println(myFraction_1.add(myFraction_2).toString());
+      assertEquals(exceptSum.toString(), myFraction_1.add(myFraction_2).toString());
     }
   }
 

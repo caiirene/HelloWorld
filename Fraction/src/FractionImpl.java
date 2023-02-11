@@ -21,12 +21,12 @@ public class FractionImpl implements Fraction {
    * @throws IllegalArgumentException if deno is zero, and we don't allow negetive deno as well
    * thank you !!!
    */
-  public FractionImpl(int x, int y) throws IllegalArgumentException {
-    if (y <= 0) {
+  public FractionImpl(int xNumo, int yDeno) throws IllegalArgumentException {
+    if (yDeno <= 0) {
       throw new IllegalArgumentException();
     }
-    this.numerator = x;
-    this.denominator = y;
+    this.numerator = xNumo;
+    this.denominator = yDeno;
   }
 
   /**
