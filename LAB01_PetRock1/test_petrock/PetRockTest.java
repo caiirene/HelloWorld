@@ -75,27 +75,46 @@ public class PetRockTest {
     SeSe.printHappyMessage();
   }
 
+  /**
+   * test the happy string is excepted
+   * @throws not yet
+   */
   @Test
   public void testGetHappyMessage() throws Exception{
     SeSe.playWithEE();
     assertEquals("I am happy!", SeSe.printHappyMessage());
   }
 
+  /**
+   * test the int
+   * @throws Exception none
+   */
   @Test
   public void testFavorateNuber() throws Exception{
     assertEquals(666,SeSe.getFavorateNumber());
   }
 
+  /**
+   * test IllegalArgumentException been thrown as it should be
+   * @throws Exception
+   */
   @Test (expected = IllegalArgumentException.class)
   public void testEmptyName() throws Exception{
     PetRock EE = new PetRock("");
   }
 
+  /**
+   * it is an infinity loop, but we have time out = 100
+   * @throws Exception
+   */
   @Test (timeout = 100)
   public void testTimeOut() throws Exception{
     SeSe.iJustWantTimeOutThankYou();
   }
 
+  /**
+   * 我实在不想解释了
+   */
   @Test
   public void whenAssertingNull_thenTrue() {
     assertNull("should be null", SeSe.getNull());
@@ -106,6 +125,9 @@ public class PetRockTest {
     assertNotSame(EE, SeSe);
   }
 
+  /**
+   * test toString return string as excepted
+   */
   @Test
   public void testToString() {
     String except = "Your Pet is 涩涩.\n It is unhappy at beginning. You can make it happy if you use playWithEE() method.";
