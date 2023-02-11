@@ -47,6 +47,7 @@ public class FractionTest {
 
   /**
    * 创建Fraction实例，新建实例为默认值（1/1） 检测使用setter
+   * test useing setter
    */
   @Test
   public void setUpGoodFractionBySettersTestFractionItself() {
@@ -75,7 +76,8 @@ public class FractionTest {
   }
 
   /**
-   * 测试负数分母和0分母 use constructor at beginning to test non-positive Deno
+   * 测试负数分母和0分母
+   * use constructor at beginning to test non-positive Deno
    */
   @Test(expected = IllegalArgumentException.class)
   public void setUpBadFractionByConstructorTestFractionItself() throws Exception {
@@ -112,7 +114,7 @@ public class FractionTest {
   }
 
   /**
-   * 倒数method检测
+   * test reciprocal method give back a new fraction object
    */
   @Test
   public void reciprocal() {
