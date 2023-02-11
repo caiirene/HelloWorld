@@ -9,36 +9,66 @@ import org.junit.rules.Timeout;
 
 public class PetRockTest {
 
+  /**
+   * set up some rules for this test
+   * timeout=10
+   */
   @Rule
   public Timeout globalTimeout = Timeout.seconds(10);
 
 
+  /**
+   * set up two object as class PetRock
+   */
   private PetRock SeSe;
   private PetRock EE;
 
+
+  /**
+   * use constructor to setup real objects before every test
+   * @throws Exception
+   */
   @Before
   public void myTestSetup() throws Exception{
     SeSe = new PetRock("涩涩");
-    EE = new PetRock("涩涩");
+    EE = new PetRock("饿饿");
   }
 
+  /**
+   * test getName method
+   * @throws Exception
+   */
   @Test
   public void getName() throws Exception {
     PetRock EEOrSeSe = new PetRock("SeSe");
     assertEquals("SeSe",EEOrSeSe.getName());
+    assertEquals("涩涩",SeSe.getName());
+    assertEquals("饿饿",EE.getName());
   }
 
+  /**
+   * test the happy is defualt to unhappy
+   */
   @Test
   public void testUnhappyAtStart() {
     assertFalse(SeSe.isHappy());
   }
 
+  /**
+   * test after useing play method, object will be happy
+   */
   @Test
   public void testHappyAfterPlay(){
     SeSe.playWithEE();
     assertTrue(SeSe.isHappy());
   }
 
+  /**
+   * due to the unfinish of original code,
+   * the exception is not test here
+   * it just test the return string no matter it is happy or not
+   * @throws Exception
+   */
   @Ignore ("not yet finish the exceptions")
   @Test (expected = IllegalStateException.class)
   public void testPrintHappyMessage() throws Exception{
