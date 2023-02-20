@@ -31,7 +31,7 @@ public class BoardUnit {
    */
   public BoardUnit(ChessPiece piece) {
     this.piece = piece;
-    this.hasPiece = true;
+    this.hasPiece = (piece != null);
   }
 
 

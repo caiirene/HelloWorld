@@ -8,4 +8,6 @@ public interface ChessBoard {
   ChessPiece getPieceOnPosition(int x, int y);
 
   boolean canMove2(ChessPiece a, int x, int y);
+
+  BoardUnit[][] getWholeBoard();
 }
