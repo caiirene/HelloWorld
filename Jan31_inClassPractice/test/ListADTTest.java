@@ -27,7 +27,6 @@ public class ListADTTest {
     assertEquals("(Patriots won the Super Bowl)",stringList.toString());
     assertEquals(5,stringList.getSize());
     assertEquals("Super",stringList.get(3));
-
     stringList.remove("Patriots");
     stringList.addFront("Falcons");
     stringList.add(1,"did");

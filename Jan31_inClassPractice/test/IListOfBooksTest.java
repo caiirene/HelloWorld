@@ -105,8 +105,7 @@ public class IListOfBooksTest {
   @Test
   public void testAllBeforeWithPredicate3() {
     int year = 2000;
-    IListOfBooks lastCentury = listOfBooks.getList(
-            (Book b) -> b.getYear() < year);
+    IListOfBooks lastCentury = listOfBooks.getList((Book b) -> b.getYear() < year);
     String expected = "(Title: HP 1 Author: J.K. Rowling Year: 1997 Price: 19.99)" +
                       "(Title: HP 2 Author: J.K. Rowling Year: 1999 Price: 29.99)";
     assertEquals(expected, lastCentury.toString());

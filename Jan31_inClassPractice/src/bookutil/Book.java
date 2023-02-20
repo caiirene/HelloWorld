@@ -1,3 +1,5 @@
+package bookutil;
+
 /**
  * This class represents a book. A book has a title, an author and a price
  */
@@ -8,7 +10,7 @@ public class Book {
   private float price;
 
   /**
-   * Construct a Book object that has the provided title, author and  price
+   * Construct a bookutil.Book object that has the provided title, author and  price
    *
    * @param title  the title to be given to this book
    * @param author the author of this book

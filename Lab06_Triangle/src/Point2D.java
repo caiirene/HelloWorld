@@ -45,4 +45,11 @@ public class Point2D {
     return y;
   }
 
+
+  public boolean sameTo(Point2D another) {
+    boolean returnVal = false;
+    if (this.x == another.getX() && this.y == another.getY()) {
+      returnVal = true;}
+    return returnVal;
+  }
 }

@@ -1,3 +1,5 @@
+package listadt;
+
 import java.util.function.Function;
 
 /**
@@ -20,7 +22,7 @@ public class GenericElementNode<T> implements GenericListADTNode<T> {
 
   @Override
   public GenericListADTNode<T> addFront(T object) {
-    return new GenericElementNode(object,this);
+    return new GenericElementNode<>(object,this);
   }
 
   @Override

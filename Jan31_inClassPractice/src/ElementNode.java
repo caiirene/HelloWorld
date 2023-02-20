@@ -43,7 +43,7 @@ public class ElementNode implements IListOfBooks {
 
   @Override
   public IListOfBooks getList(Predicate<Book> test) {
-    if (test.test(book)) {
+    if (test.test(this.book)) {
       return new ElementNode(this.book,this.rest.getList(test));
     }
     else {

@@ -1,3 +1,5 @@
+package listadt;
+
 import java.util.function.Function;
 
 /**
@@ -9,7 +11,7 @@ public class GenericEmptyNode<T> implements GenericListADTNode<T> {
 
   @Override
   public GenericListADTNode<T> addFront(T object) {
-    return new GenericElementNode(object,this);
+    return new GenericElementNode<>(object,this);
   }
 
   @Override
@@ -36,7 +38,7 @@ public class GenericEmptyNode<T> implements GenericListADTNode<T> {
 
   @Override
   public <R> GenericListADTNode<R> map(Function<T,R> converter) {
-    return new GenericEmptyNode();
+    return new GenericEmptyNode<>();
   }
 
   @Override

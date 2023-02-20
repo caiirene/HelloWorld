@@ -10,7 +10,7 @@ public class ListADTImpl<T> implements ListADT<T> {
   private GenericListADTNode<T> head;
 
   public ListADTImpl() {
-    head = new GenericEmptyNode();
+    head = new GenericEmptyNode<>();
   }
 
   //a private constructor that is used internally (see map)

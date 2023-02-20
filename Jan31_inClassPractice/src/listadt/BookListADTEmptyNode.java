@@ -1,4 +1,7 @@
+package listadt;
+
 import bookutil.Book;
+import listadt.BookListADTElementNode;
 
 /**
  * This class represents an empty node in the list adt implementation.
@@ -13,7 +16,7 @@ public class BookListADTEmptyNode implements BookListADTNode {
 
   @Override
   public BookListADTNode addFront(Book book) {return new
-          BookListADTElementNode(book,this);}
+      BookListADTElementNode(book,this);}
 
   @Override
   public BookListADTNode addBack(Book book) { return addFront(book);}
