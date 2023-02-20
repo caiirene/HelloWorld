@@ -56,6 +56,11 @@ public class Board implements ChessBoard {
   }
 
   @Override
+  public void setPieceOntoBoard(ChessPiece a) {
+    this.wholeBroad[a.getRow()][a.getColoum()].setPiece(a);
+  }
+
+  @Override
   public ChessPiece getPieceOnPosition(int x, int y) {
     return this.wholeBroad[x][y].whatPieceItHas();
   }
