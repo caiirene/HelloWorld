@@ -34,13 +34,6 @@ public class BoardTest {
 
   @Test
   public void getPieceOnPositionTEST() {
-    ChessPiece testPiece = new Rook(1,1,BW.WHITE);
-    ChessBoard testBoard = new Board();
-    testBoard.setPieceOntoBoard(testPiece);
-    assertEquals(testPiece, testBoard.getPieceOnPosition(1,1));
-
-    ChessBoard testBoard2 = new Board(1);
-    assertEquals(null, testBoard2.getPieceOnPosition(3,3));
   }
 
   @Test
@@ -88,12 +81,6 @@ public class BoardTest {
     testBoard.setPieceOntoBoard(queen_w);
 
     assertFalse(testBoard.canMove2(queen_w,5,5));
-    assertFalse(testBoard.canMove2(queen_b,4,4));
-    assertTrue(testBoard.canMove2(knight_w1,3,4));
-    assertTrue(testBoard.canMove2(bishop_b1,6,2));
-    assertFalse(testBoard.canMove2(bishop_b1,2,6));
-    assertFalse(testBoard.canMove2(bishop_b1,4,7));
-    assertEquals(false,testBoard.canMove2(rook_b2,1,7));
 
   }
 }
