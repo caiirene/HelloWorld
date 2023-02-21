@@ -33,7 +33,7 @@ public interface ChessPiece {
    */
   boolean canKill(ChessPiece another);
 
-  boolean canMove2(int x, int y);
+  //boolean canMove2(int x, int y);
 
   Type getChessType();
 

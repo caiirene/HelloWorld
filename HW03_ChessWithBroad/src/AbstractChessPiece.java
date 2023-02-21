@@ -37,12 +37,13 @@ public abstract class AbstractChessPiece implements ChessPiece {
     return;
   }
 
-  public boolean canMove2(int x, int y){
+  /*public boolean canMove2(int x, int y){
     boolean canMove2_ReturnVal = false;
     if (!canMove(x,y)) {return false;}
 
     return canMove2_ReturnVal;
   }
+   */
 
   public String toString() {
     String thisType;
@@ -61,6 +62,9 @@ public abstract class AbstractChessPiece implements ChessPiece {
         break;
       case KNIGHT:
         thisType = "knight";
+        break;
+      case KING:
+        thisType = "king";
         break;
       default:
         thisType = "unknow";

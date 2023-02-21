@@ -83,6 +83,10 @@ public class ChessPieceTest {
     assertEquals(false, queen_w.canMove(2,2));
     assertEquals(false, bishop_b1.canMove(3,4));
     assertEquals(true, bishop_b1.canMove(5,3));
+
+    assertEquals(BW.BLACK, pawn_b1.getBW());
+    //System.out.println("start\n");
+    assertEquals(false, pawn_b1.canMove(0,7));
   }
 
 
@@ -97,6 +101,14 @@ public class ChessPieceTest {
     assertFalse(bishop_b1.canKill(queen_w));
     assertFalse(knight_w1.canKill(rook_b1));
     assertFalse(pawn_w1.canKill(rook_b1));
+
+
+    ChessPiece test_pawn_b_1 = new Pawn(1,4,BW.BLACK);
+    ChessPiece test_pawn_b_2 = new Pawn(1,2,BW.BLACK);
+    ChessPiece test_pawnw_1 = new Pawn(3,4,BW.WHITE);
+
+
+    assertEquals(true, pawn_w1.canKill(test_pawn_b_1));
   }
 
   @Test

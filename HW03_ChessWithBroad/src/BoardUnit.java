@@ -22,9 +22,10 @@ public class BoardUnit {
   这里设置该实例的底色，我先暂时不用，先试试看，
   因为似乎只有象，分“白象、黑象”
    */
-  public void setUnitColor(BW blackOrWhite) {
+  /*public void setUnitColor(BW blackOrWhite) {
     this.unitBoardColor = blackOrWhite;
   }
+   */
 
   /*
   这里是第二种不同的初始化方式，可以直接放一颗棋子在本unit里
@@ -43,7 +44,10 @@ public class BoardUnit {
     return this.piece;
   }
 
-  public void setPiece(ChessPiece newPiece) { //也可以是resetPiece
+  public void setPiece(ChessPiece newPiece) throws IllegalArgumentException{ //也可以是resetPiece
+    if (this.hasPiece) {
+      throw new IllegalArgumentException();
+    }
     this.piece = newPiece;
     this.hasPiece = (this.piece != null);
   }

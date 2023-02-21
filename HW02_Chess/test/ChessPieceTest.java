@@ -83,6 +83,9 @@ public class ChessPieceTest {
     assertEquals(false, queen_w.canMove(2,2));
     assertEquals(false, bishop_b1.canMove(3,4));
     assertEquals(true, bishop_b1.canMove(5,3));
+    assertEquals(false, pawn_w1.canMove(3,4));
+    assertEquals(true, pawn_w1.canMove(2,4));
+
   }
 
 
