@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class KnightTest {
+public class AbstractChessPieceTest {
 
   @Test
   public void getRow() {
@@ -40,23 +40,5 @@ public class KnightTest {
     assertEquals(except_2, test_2.toString());
   }
 
-  @Test
-  public void canMove() {
-    ChessPiece test_1 = new Knight(2,0,BW.WHITE);
-    ChessPiece test_2 = new Knight(5,7,BW.BLACK);
-    assertEquals(true, test_1.canMove(1,2));
-    assertEquals(false, test_2.canMove(1,1));
-  }
 
-  @Test
-  public void canKill() {
-    ChessPiece test_1 = new Knight(2,0,BW.WHITE);
-    ChessPiece test_2 = new Knight(5,7,BW.BLACK);
-    assertEquals(false, test_1.canKill(test_2));
-    assertEquals(false, test_2.canKill(test_1));
-    ChessPiece killed = new Rook(3,2,BW.BLACK);
-    ChessPiece killed2 = new Rook(7,6,BW.BLACK);
-    assertEquals(true, test_1.canKill(killed));
-    assertEquals(false, test_2.canKill(killed2));
-  }
 }
