@@ -15,10 +15,10 @@ public abstract class AbstractChessPiece implements ChessPiece {
    * constructor
    * it will be used by all different pieces class
    * and in those class, they will provide chessType by default
-   * @param x
-   * @param y
+   * @param x the number on row (注意：这里是指从横坐标上读取到的数，而不是行数)
+   * @param y the number read from y-axis
    * @param blackOrWhite
-   * @param chessType
+   * @param chessType e.g.BISHOP/ QUEEN......
    */
   public AbstractChessPiece(int x, int y, BW blackOrWhite, Type chessType) {
     checkIndex(x, y);
@@ -32,6 +32,7 @@ public abstract class AbstractChessPiece implements ChessPiece {
   /**
    * getRow() and getColoum() and getBW() are used by all pieces class,
    * so just make it abstract
+   * they return the 横竖坐标读数 and the color info about a piece
    * @return int or BW
    */
   @Override
@@ -52,8 +53,8 @@ public abstract class AbstractChessPiece implements ChessPiece {
   /**
    * this method are used in all pieces class, but just inside them
    * so protected
-   * @param x
-   * @param y
+   * @param x the x-axis you want to check
+   * @param y ...y-axis...
    */
   protected void checkIndex(int x, int y) {
     if ((x >= 8) || y >= 8 || 0 > x || 0 > y) {
@@ -76,6 +77,7 @@ public abstract class AbstractChessPiece implements ChessPiece {
    * so use switch
    * @return string
    */
+  @Override
   public String toString() {
     String thisType;
     switch (this.chessType) {
