@@ -36,14 +36,27 @@ public class BoardUnit {
   }
 
 
+  /**
+   * check is there a ChessPiece object in this unit
+   * @return t/f
+   */
   public boolean isThereAPiece() {
     return this.hasPiece;
   }
 
+  /**
+   * give information about the ChessPiece object in this unit
+   * @return ChessPiece
+   */
   public ChessPiece whatPieceItHas() {
     return this.piece;
   }
 
+  /**
+   * 重置安置的棋子信息
+   * @param newPiece
+   * @throws IllegalArgumentException
+   */
   public void setPiece(ChessPiece newPiece) throws IllegalArgumentException{ //也可以是resetPiece
     if (this.hasPiece) {
       throw new IllegalArgumentException();
@@ -52,6 +65,10 @@ public class BoardUnit {
     this.hasPiece = (this.piece != null);
   }
 
+  /**
+   * 删除一个棋子，让 this.piece = null;
+   *     this.hasPiece = false;
+   */
   public void removePiece() {
     this.piece = null;
     this.hasPiece = false;

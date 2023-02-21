@@ -1,3 +1,11 @@
+/**
+ * this class impl ChessBoard interface
+ * it has two constructors
+ * one build empty board
+ * another one build board with default chess on top
+ * it has 5 methods
+ */
+
 public class Board implements ChessBoard {
 
   private BoardUnit[][] wholeBroad; // = new BoardUnit[8][8];
@@ -18,6 +26,12 @@ public class Board implements ChessBoard {
     }
   }
 
+  /**
+   * second constructor
+   * take any int param to make a difference
+   * it will use initializeTheBoard() to put all piece to default position
+   * @param doNotMatter_JustPutAnyIntHere_ItWillGiveYouAInitializedBoard
+   */
   public Board(int doNotMatter_JustPutAnyIntHere_ItWillGiveYouAInitializedBoard) {
     this.wholeBroad = new BoardUnit[8][8];
     for (int i = 0; i < 8; i++) {
@@ -29,6 +43,10 @@ public class Board implements ChessBoard {
   }
 
 
+  /**
+   * put default pieces onto correct postion by unit class-setPiece method
+   * then make the middle 4 lines empty as new empty units
+   */
   @Override
   public void initializeTheBoard() {
     this.wholeBroad[0][0].setPiece(new Rook(0, 0, BW.WHITE));
@@ -43,6 +61,11 @@ public class Board implements ChessBoard {
     for (int i = 0; i < 8; i++) {
       this.wholeBroad[i][1].setPiece(new Pawn(i, 1, BW.WHITE));
       this.wholeBroad[i][6].setPiece(new Pawn(i, 6, BW.BLACK));
+      this.wholeBroad[i][2] = new BoardUnit();
+      this.wholeBroad[i][3] = new BoardUnit();
+      this.wholeBroad[i][4] = new BoardUnit();
+      this.wholeBroad[i][5] = new BoardUnit();
+      //清空一下中间4行
     }
 
     this.wholeBroad[0][7].setPiece(new Rook(0, 7, BW.BLACK));
@@ -55,6 +78,16 @@ public class Board implements ChessBoard {
     this.wholeBroad[7][7].setPiece(new Rook(7, 7, BW.BLACK));
   }
 
+
+  /**
+   * we can set an exist piece onto board, by setPiece method in Unit class
+   * but we need to check is there a piece already?
+   * 这个似乎以后要去掉，因为如果吃子，是可以直接使用这个method的，
+   * 否则吃子时，又要单独再判断
+   * 画蛇添足！！！但不改了，就这样吧
+   * @param a
+   * @throws IllegalArgumentException
+   */
   @Override
   public void setPieceOntoBoard(ChessPiece a) throws IllegalArgumentException {
     if (this.wholeBroad[a.getRow()][a.getColoum()].isThereAPiece()) {
@@ -64,13 +97,27 @@ public class Board implements ChessBoard {
     this.wholeBroad[a.getRow()][a.getColoum()].setPiece(a);
   }
 
+  /**
+   * give back imformation about what is on board (in one unit)
+   * @param x
+   * @param y
+   * @return
+   */
   @Override
   public ChessPiece getPieceOnPosition(int x, int y) {
     return this.wholeBroad[x][y].whatPieceItHas();
   }
 
 
-
+  /**
+   * it checks can a piece move to a provided postion
+   * for more information, translate the Chinese comments
+   * @param a
+   * @param x
+   * @param y
+   * @return
+   * @throws IllegalArgumentException
+   */
   @Override
   public boolean canMove2(ChessPiece a, int x, int y) throws IllegalArgumentException{
     //首先，我们来判断一下这颗棋子是否存在于棋盘
