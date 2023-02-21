@@ -3,18 +3,24 @@ import static java.lang.Math.abs;
 public class Bishop extends AbstractChessPiece {
 
 
+  /**
+   * constructor
+   * need 横纵坐标, BW
+   * it provides type as bishop to AbstractChessPiece automaticlly
+   * @param x
+   * @param y
+   * @param color
+   */
   public Bishop (int x, int y, BW color) {
     super(x,y,color,Type.BISHOP);
   }
 
 
   /**
-   * this construct an object of bishop chess
-   * at x,y position
-   * and color in your choice
-   * @param x pos
-   * @param y pos
-   * @return object
+   * it checks this object can move to a provided 横纵坐标
+   * @param x
+   * @param y
+   * @return true or false
    */
   @Override
   public boolean canMove(int x, int y) {
@@ -26,6 +32,12 @@ public class Bishop extends AbstractChessPiece {
     return bishopCanMove;
   }
 
+
+  /**
+   * it takes another ChessPiece object as param, to check this object can kill or not
+   * @param another
+   * @return t/f
+   */
   @Override
   public boolean canKill(ChessPiece another) {
     boolean bishopCanKill;

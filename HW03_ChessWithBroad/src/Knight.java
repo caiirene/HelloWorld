@@ -7,12 +7,10 @@ public class Knight extends AbstractChessPiece{
   }
 
   /**
-   * this construct an object of bishop chess
-   * at x,y position
-   * and color in your choice
-   * @param x pos
-   * @param y pos
-   * @return object
+   * it checks this object can move to a provided 横纵坐标
+   * @param x
+   * @param y
+   * @return true or false
    */
   @Override
   public boolean canMove(int x, int y) {
@@ -23,6 +21,11 @@ public class Knight extends AbstractChessPiece{
     return knightCanMove;
   }
 
+  /**
+   * it takes another ChessPiece object as param, to check this object can kill or not
+   * @param another
+   * @return t/f
+   */
   @Override
   public boolean canKill(ChessPiece another) {
     return canMove(another.getRow(), another.getColoum()) && this.getBW() != another.getBW();

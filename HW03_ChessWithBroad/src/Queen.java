@@ -15,6 +15,12 @@ public class Queen extends AbstractChessPiece {
   }
 
 
+  /**
+   * it checks this object can move to a provided 横纵坐标
+   * @param x
+   * @param y
+   * @return true or false
+   */
   @Override
   public boolean canMove(int x, int y) {
     checkIndex(x,y);
@@ -25,6 +31,11 @@ public class Queen extends AbstractChessPiece {
     return bishopCanMove;
   }
 
+  /**
+   * it takes another ChessPiece object as param, to check this object can kill or not
+   * @param another
+   * @return t/f
+   */
   @Override
   public boolean canKill(ChessPiece another) {
     boolean bishopCanKill;

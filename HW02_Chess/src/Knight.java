@@ -2,17 +2,23 @@ import static java.lang.Math.abs;
 
 public class Knight extends AbstractChessPiece{
 
+  /**
+   * constructor
+   * need 横纵坐标, BW
+   * it provides type as knight to AbstractChessPiece automaticlly
+   * @param x
+   * @param y
+   * @param BW
+   */
   public Knight(int x, int y, BW blackOrWhite) {
     super(x,y,blackOrWhite,Type.KNIGHT);
   }
 
   /**
-   * this construct an object of bishop chess
-   * at x,y position
-   * and color in your choice
-   * @param x pos
-   * @param y pos
-   * @return object
+   * it checks this object can move to a provided 横纵坐标
+   * @param x
+   * @param y
+   * @return true or false
    */
   @Override
   public boolean canMove(int x, int y) {
@@ -23,6 +29,11 @@ public class Knight extends AbstractChessPiece{
     return knightCanMove;
   }
 
+  /**
+   * it takes another ChessPiece object as param, to check this object can kill or not
+   * @param another
+   * @return t/f
+   */
   @Override
   public boolean canKill(ChessPiece another) {
     return canMove(another.getRow(), another.getColoum()) && this.getBW() != another.getBW();

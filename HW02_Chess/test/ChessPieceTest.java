@@ -39,6 +39,9 @@ public class ChessPieceTest {
     queen_w = new Queen(6,1,BW.WHITE);
   }
 
+  /**
+   * test getRow, it should return right int
+   */
   @org.junit.Test
   public void getRow() {
     assertEquals(3, bishop_b1.getRow());
@@ -51,6 +54,9 @@ public class ChessPieceTest {
 
   }
 
+  /**
+   * test getColoum, it should return right int
+   */
   @org.junit.Test
   public void getColoum() {
     assertEquals(6, pawn_b2.getColoum());
@@ -61,6 +67,9 @@ public class ChessPieceTest {
     assertEquals(1, pawn_w4.getColoum());
   }
 
+  /**
+   * test getBW on all situations
+   */
   @org.junit.Test
   public void getBW() {
     assertEquals(BW.WHITE, pawn_w4.getBW());
@@ -69,6 +78,10 @@ public class ChessPieceTest {
     assertEquals(pawn_b2.getBW(), bishop_b1.getBW());
   }
 
+
+  /**
+   * test canMove method on all situation
+   */
   @org.junit.Test
   public void canMove() {
     assertEquals(true, pawn_b3.canMove(5,4));
@@ -89,7 +102,9 @@ public class ChessPieceTest {
   }
 
 
-
+  /**
+   * test on canKill method on all situations
+   */
   @org.junit.Test
   public void canKill() {
     assertTrue(rook_b1.canKill(pawn_w1));
@@ -102,6 +117,9 @@ public class ChessPieceTest {
     assertFalse(pawn_w1.canKill(rook_b1));
   }
 
+  /**
+   * test toString by abstract class
+   */
   @Test
   public void testToString() {
     String expected = "this piece is a white pawn in position (2,3)\n";

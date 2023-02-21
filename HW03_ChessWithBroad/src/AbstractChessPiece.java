@@ -1,3 +1,7 @@
+/**
+ * this abstract class provide 6 methods to implement ChessPiece interface
+ */
+
 public abstract class AbstractChessPiece implements ChessPiece {
 
   protected BW color;
@@ -7,6 +11,15 @@ public abstract class AbstractChessPiece implements ChessPiece {
   public Type chessType;
 
 
+  /**
+   * constructor
+   * it will be used by all different pieces class
+   * and in those class, they will provide chessType by default
+   * @param x
+   * @param y
+   * @param blackOrWhite
+   * @param chessType
+   */
   public AbstractChessPiece(int x, int y, BW blackOrWhite, Type chessType) {
     checkIndex(x, y);
     this.rowPos = x;
@@ -15,6 +28,12 @@ public abstract class AbstractChessPiece implements ChessPiece {
     this.chessType = chessType;
   }
 
+
+  /**
+   * getRow() and getColoum() and getBW() are used by all pieces class,
+   * so just make it abstract
+   * @return int or BW
+   */
   @Override
   public int getRow() {
     return this.rowPos;
@@ -30,6 +49,12 @@ public abstract class AbstractChessPiece implements ChessPiece {
     return this.color;
   }
 
+  /**
+   * this method are used in all pieces class, but just inside them
+   * so protected
+   * @param x
+   * @param y
+   */
   protected void checkIndex(int x, int y) {
     if ((x >= 8) || y >= 8 || 0 > x || 0 > y) {
       throw new IllegalArgumentException();
@@ -45,6 +70,12 @@ public abstract class AbstractChessPiece implements ChessPiece {
   }
    */
 
+
+  /**
+   * since all pieces need toString, but each toString are different,
+   * so use switch
+   * @return string
+   */
   public String toString() {
     String thisType;
     switch (this.chessType) {
@@ -88,6 +119,10 @@ public abstract class AbstractChessPiece implements ChessPiece {
     return str;
   }
 
+  /**
+   * 这个写出来就是为了test使用，没啥重要的
+   * @return type
+   */
   @Override
   public Type getChessType() {
     return this.chessType;
