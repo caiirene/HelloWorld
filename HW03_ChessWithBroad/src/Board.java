@@ -9,7 +9,7 @@
 public class Board implements ChessBoard {
 
   private BoardUnit[][] wholeBroad; // = new BoardUnit[8][8];
-  private int count = 0;
+  //private int count = 0;
 
 
   /*
