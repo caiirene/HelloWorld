@@ -1,3 +1,10 @@
+/**
+ * concrete queen class.
+ * AbstractChessPiece implement ChessPiece, this bishop class extend AbstractChessPiece
+ * this class can create an ChessPiece object
+ * it has 横纵坐标, BW, and provide type as queen to AbstractChessPiece
+ */
+
 import static java.lang.Math.abs;
 
 public class Queen extends AbstractChessPiece {
@@ -10,7 +17,7 @@ public class Queen extends AbstractChessPiece {
    * @param y pos
    * @return object
    */
-  public Queen (int x, int y, BW color) {
+  public Queen (int x, int y, BorW color) {
     super(x,y,color, Type.QUEEN);
   }
 

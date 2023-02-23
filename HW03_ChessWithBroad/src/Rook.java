@@ -1,3 +1,10 @@
+/**
+ * concrete rook class.
+ * AbstractChessPiece implement ChessPiece, this bishop class extend AbstractChessPiece
+ * this class can create an ChessPiece object
+ * it has 横纵坐标, BW, and provide type as rook to AbstractChessPiece
+ */
+
 import static java.lang.Math.abs;
 public class Rook extends AbstractChessPiece {
 
@@ -9,7 +16,7 @@ public class Rook extends AbstractChessPiece {
    * @param y pos
    * @return object
    */
-  public Rook(int x, int y, BW blackOrWhite) {
+  public Rook(int x, int y, BorW blackOrWhite) {
     super(x,y,blackOrWhite, Type.ROOK);
   }
 

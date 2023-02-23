@@ -1,3 +1,10 @@
+/**
+ * concrete pawn class.
+ * AbstractChessPiece implement ChessPiece, this bishop class extend AbstractChessPiece
+ * this class can create an ChessPiece object
+ * it has 横纵坐标, BW, and provide type as pawn to AbstractChessPiece
+ */
+
 import static java.lang.Math.abs;
 
 /**
@@ -10,7 +17,7 @@ import static java.lang.Math.abs;
  */
 public class Pawn extends AbstractChessPiece {
 
-  public Pawn(int x, int y, BW blackOrWhite) {
+  public Pawn(int x, int y, BorW blackOrWhite) {
     super(x, y, blackOrWhite, Type.PAWN);
   }
 

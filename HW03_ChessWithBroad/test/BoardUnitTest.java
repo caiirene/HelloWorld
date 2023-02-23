@@ -8,7 +8,7 @@ public class BoardUnitTest {
   public void isThereAPiece() {
     BoardUnit test = new BoardUnit();
     assertEquals(false, test.isThereAPiece());
-    BoardUnit test2 = new BoardUnit(new Rook(1,2,BW.BLACK));
+    BoardUnit test2 = new BoardUnit(new Rook(1,2, BorW.BLACK));
     assertEquals(true, test2.isThereAPiece());
   }
 
@@ -16,7 +16,7 @@ public class BoardUnitTest {
   public void whatPieceItHas() {
     BoardUnit test = new BoardUnit();
     assertEquals(null, test.whatPieceItHas());
-    ChessPiece mytest = new Rook(1,2,BW.BLACK);
+    ChessPiece mytest = new Rook(1,2, BorW.BLACK);
     BoardUnit test2 = new BoardUnit(mytest);
     assertEquals(mytest, test2.whatPieceItHas());
   }
@@ -25,7 +25,7 @@ public class BoardUnitTest {
   public void setPiece() {
     BoardUnit test = new BoardUnit();
     assertEquals(null, test.whatPieceItHas());
-    test.setPiece(new Rook(1,2,BW.BLACK));
+    test.setPiece(new Rook(1,2, BorW.BLACK));
     assertEquals(true, test.isThereAPiece());
   }
 
@@ -33,7 +33,7 @@ public class BoardUnitTest {
   public void removePiece() {
     BoardUnit test = new BoardUnit();
     assertEquals(null, test.whatPieceItHas());
-    test.setPiece(new Rook(1,2,BW.BLACK));
+    test.setPiece(new Rook(1,2, BorW.BLACK));
     assertEquals(true, test.isThereAPiece());
     test.removePiece();
     assertEquals(false, test.isThereAPiece());

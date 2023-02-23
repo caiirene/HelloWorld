@@ -11,8 +11,8 @@ public class QueenTest {
    */
   @Test
   public void getRow() {
-    ChessPiece test_1 = new Queen(2,0,BW.WHITE);
-    ChessPiece test_2 = new Queen(5,7,BW.BLACK);
+    ChessPiece test_1 = new Queen(2,0, BorW.WHITE);
+    ChessPiece test_2 = new Queen(5,7, BorW.BLACK);
     assertEquals(2,test_1.getRow());
     assertEquals(5,test_2.getRow());
   }
@@ -23,8 +23,8 @@ public class QueenTest {
    */
   @Test
   public void getColoum() {
-    ChessPiece test_1 = new Queen(2,0,BW.WHITE);
-    ChessPiece test_2 = new Queen(5,7,BW.BLACK);
+    ChessPiece test_1 = new Queen(2,0, BorW.WHITE);
+    ChessPiece test_2 = new Queen(5,7, BorW.BLACK);
     assertEquals(0,test_1.getColoum());
     assertEquals(7,test_2.getColoum());
   }
@@ -35,10 +35,10 @@ public class QueenTest {
    */
   @Test
   public void getBW() {
-    ChessPiece test_1 = new Queen(2,0,BW.WHITE);
-    ChessPiece test_2 = new Queen(5,7,BW.BLACK);
-    assertEquals(BW.WHITE,test_1.getBW());
-    assertEquals(BW.BLACK,test_2.getBW());
+    ChessPiece test_1 = new Queen(2,0, BorW.WHITE);
+    ChessPiece test_2 = new Queen(5,7, BorW.BLACK);
+    assertEquals(BorW.WHITE,test_1.getBW());
+    assertEquals(BorW.BLACK,test_2.getBW());
   }
 
 
@@ -48,8 +48,8 @@ public class QueenTest {
    */
   @Test
   public void testToString() {
-    ChessPiece test_1 = new Queen(2,0,BW.WHITE);
-    ChessPiece test_2 = new Queen(5,7,BW.BLACK);
+    ChessPiece test_1 = new Queen(2,0, BorW.WHITE);
+    ChessPiece test_2 = new Queen(5,7, BorW.BLACK);
     String except_1 = "this piece is a white queen in position (2,0)\n";
     String except_2 = "this piece is a black queen in position (5,7)\n";
 
@@ -63,8 +63,8 @@ public class QueenTest {
    */
   @Test
   public void canMove() {
-    ChessPiece test_1 = new Queen(2,0,BW.WHITE);
-    ChessPiece test_2 = new Queen(5,7,BW.BLACK);
+    ChessPiece test_1 = new Queen(2,0, BorW.WHITE);
+    ChessPiece test_2 = new Queen(5,7, BorW.BLACK);
     assertEquals(true, test_1.canMove(1,1));
     assertEquals(false, test_2.canMove(1,1));
   }
@@ -75,12 +75,12 @@ public class QueenTest {
    */
   @Test
   public void canKill() {
-    ChessPiece test_1 = new Queen(2,0,BW.WHITE);
-    ChessPiece test_2 = new Queen(5,7,BW.BLACK);
+    ChessPiece test_1 = new Queen(2,0, BorW.WHITE);
+    ChessPiece test_2 = new Queen(5,7, BorW.BLACK);
     assertEquals(false, test_1.canKill(test_2));
     assertEquals(false, test_2.canKill(test_1));
-    ChessPiece killed = new Rook(3,1,BW.BLACK);
-    ChessPiece killed2 = new Rook(7,5,BW.BLACK);
+    ChessPiece killed = new Rook(3,1, BorW.BLACK);
+    ChessPiece killed2 = new Rook(7,5, BorW.BLACK);
     assertEquals(true, test_1.canKill(killed));
     assertEquals(false, test_2.canKill(killed2));
   }

@@ -17,7 +17,7 @@ public class Bishop extends AbstractChessPiece {
    * @param y
    * @param color
    */
-  public Bishop (int x, int y, BW color) {
+  public Bishop (int x, int y, BorW color) {
     super(x,y,color,Type.BISHOP);
   }
 

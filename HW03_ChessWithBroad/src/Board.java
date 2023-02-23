@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * this class impl ChessBoard interface
  * it has two constructors
@@ -10,6 +12,7 @@ public class Board implements ChessBoard {
 
   private BoardUnit[][] wholeBroad; // = new BoardUnit[8][8];
   //private int count = 0;
+  private ArrayList<ArrayList<ChessPiece>> board;
 
 
   /*
@@ -49,18 +52,18 @@ public class Board implements ChessBoard {
    */
   @Override
   public void initializeTheBoard() {
-    this.wholeBroad[0][0].setPiece(new Rook(0, 0, BW.WHITE));
-    this.wholeBroad[1][0].setPiece(new Knight(1, 0, BW.WHITE));
-    this.wholeBroad[2][0].setPiece(new Bishop(2, 0, BW.WHITE));
-    this.wholeBroad[3][0].setPiece(new Queen(3, 0, BW.WHITE));
-    this.wholeBroad[4][0].setPiece(new King(4, 0, BW.WHITE));
-    this.wholeBroad[5][0].setPiece(new Bishop(5, 0, BW.WHITE));
-    this.wholeBroad[6][0].setPiece(new Knight(6, 0, BW.WHITE));
-    this.wholeBroad[7][0].setPiece(new Rook(7, 0, BW.WHITE));
+    this.wholeBroad[0][0].setPiece(new Rook(0, 0, BorW.WHITE));
+    this.wholeBroad[1][0].setPiece(new Knight(1, 0, BorW.WHITE));
+    this.wholeBroad[2][0].setPiece(new Bishop(2, 0, BorW.WHITE));
+    this.wholeBroad[3][0].setPiece(new Queen(3, 0, BorW.WHITE));
+    this.wholeBroad[4][0].setPiece(new King(4, 0, BorW.WHITE));
+    this.wholeBroad[5][0].setPiece(new Bishop(5, 0, BorW.WHITE));
+    this.wholeBroad[6][0].setPiece(new Knight(6, 0, BorW.WHITE));
+    this.wholeBroad[7][0].setPiece(new Rook(7, 0, BorW.WHITE));
 
     for (int i = 0; i < 8; i++) {
-      this.wholeBroad[i][1].setPiece(new Pawn(i, 1, BW.WHITE));
-      this.wholeBroad[i][6].setPiece(new Pawn(i, 6, BW.BLACK));
+      this.wholeBroad[i][1].setPiece(new Pawn(i, 1, BorW.WHITE));
+      this.wholeBroad[i][6].setPiece(new Pawn(i, 6, BorW.BLACK));
       this.wholeBroad[i][2] = new BoardUnit();
       this.wholeBroad[i][3] = new BoardUnit();
       this.wholeBroad[i][4] = new BoardUnit();
@@ -68,14 +71,14 @@ public class Board implements ChessBoard {
       //清空一下中间4行
     }
 
-    this.wholeBroad[0][7].setPiece(new Rook(0, 7, BW.BLACK));
-    this.wholeBroad[1][7].setPiece(new Knight(1, 7, BW.BLACK));
-    this.wholeBroad[2][7].setPiece(new Bishop(2, 7, BW.BLACK));
-    this.wholeBroad[3][7].setPiece(new Queen(3, 7, BW.BLACK));
-    this.wholeBroad[4][7].setPiece(new King(4, 7, BW.BLACK));
-    this.wholeBroad[5][7].setPiece(new Bishop(5, 7, BW.BLACK));
-    this.wholeBroad[6][7].setPiece(new Knight(6, 7, BW.BLACK));
-    this.wholeBroad[7][7].setPiece(new Rook(7, 7, BW.BLACK));
+    this.wholeBroad[0][7].setPiece(new Rook(0, 7, BorW.BLACK));
+    this.wholeBroad[1][7].setPiece(new Knight(1, 7, BorW.BLACK));
+    this.wholeBroad[2][7].setPiece(new Bishop(2, 7, BorW.BLACK));
+    this.wholeBroad[3][7].setPiece(new Queen(3, 7, BorW.BLACK));
+    this.wholeBroad[4][7].setPiece(new King(4, 7, BorW.BLACK));
+    this.wholeBroad[5][7].setPiece(new Bishop(5, 7, BorW.BLACK));
+    this.wholeBroad[6][7].setPiece(new Knight(6, 7, BorW.BLACK));
+    this.wholeBroad[7][7].setPiece(new Rook(7, 7, BorW.BLACK));
   }
 
 

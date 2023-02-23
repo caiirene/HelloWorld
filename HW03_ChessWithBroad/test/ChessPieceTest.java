@@ -11,7 +11,7 @@ public class ChessPieceTest {
 
   @Test (expected = IllegalArgumentException.class)
   public void badSetUp() {
-    bishop_b1 = new Bishop(10,101, BW.WHITE);
+    bishop_b1 = new Bishop(10,101, BorW.WHITE);
   }
 
   /**
@@ -20,23 +20,23 @@ public class ChessPieceTest {
    */
   @Before
   public void setUp() {
-    bishop_b1 = new Bishop(3,5,BW.BLACK);
-    rook_b1 = new Rook(3,3,BW.BLACK);
-    rook_b2 = new Rook(2,6,BW.BLACK);
-    pawn_b1 = new Pawn(0,6,BW.BLACK);
-    pawn_b2 = new Pawn(5,6,BW.BLACK);
-    pawn_b3 = new Pawn(5,5,BW.BLACK);
-    pawn_b4 = new Pawn(6,5,BW.BLACK);
-    queen_b = new Queen(6,6, BW.BLACK);
+    bishop_b1 = new Bishop(3,5, BorW.BLACK);
+    rook_b1 = new Rook(3,3, BorW.BLACK);
+    rook_b2 = new Rook(2,6, BorW.BLACK);
+    pawn_b1 = new Pawn(0,6, BorW.BLACK);
+    pawn_b2 = new Pawn(5,6, BorW.BLACK);
+    pawn_b3 = new Pawn(5,5, BorW.BLACK);
+    pawn_b4 = new Pawn(6,5, BorW.BLACK);
+    queen_b = new Queen(6,6, BorW.BLACK);
 
-    knight_w1 = new Knight(4,2, BW.WHITE);
-    rook_w1 = new Rook(1,7,BW.WHITE);
-    rook_w2 = new Rook(4,7,BW.WHITE);
-    pawn_w1 = new Pawn(2,3,BW.WHITE);
-    pawn_w2 = new Pawn(0,1,BW.WHITE);
-    pawn_w3 = new Pawn(6,2,BW.WHITE);
-    pawn_w4 = new Pawn(5,1,BW.WHITE);
-    queen_w = new Queen(6,1,BW.WHITE);
+    knight_w1 = new Knight(4,2, BorW.WHITE);
+    rook_w1 = new Rook(1,7, BorW.WHITE);
+    rook_w2 = new Rook(4,7, BorW.WHITE);
+    pawn_w1 = new Pawn(2,3, BorW.WHITE);
+    pawn_w2 = new Pawn(0,1, BorW.WHITE);
+    pawn_w3 = new Pawn(6,2, BorW.WHITE);
+    pawn_w4 = new Pawn(5,1, BorW.WHITE);
+    queen_w = new Queen(6,1, BorW.WHITE);
   }
 
   @org.junit.Test
@@ -63,9 +63,9 @@ public class ChessPieceTest {
 
   @org.junit.Test
   public void getBW() {
-    assertEquals(BW.WHITE, pawn_w4.getBW());
-    assertEquals(BW.WHITE, queen_w.getBW());
-    assertEquals(BW.BLACK, pawn_b2.getBW());
+    assertEquals(BorW.WHITE, pawn_w4.getBW());
+    assertEquals(BorW.WHITE, queen_w.getBW());
+    assertEquals(BorW.BLACK, pawn_b2.getBW());
     assertEquals(pawn_b2.getBW(), bishop_b1.getBW());
   }
 
@@ -84,7 +84,7 @@ public class ChessPieceTest {
     assertEquals(false, bishop_b1.canMove(3,4));
     assertEquals(true, bishop_b1.canMove(5,3));
 
-    assertEquals(BW.BLACK, pawn_b1.getBW());
+    assertEquals(BorW.BLACK, pawn_b1.getBW());
     //System.out.println("start\n");
     assertEquals(false, pawn_b1.canMove(0,7));
   }
@@ -103,9 +103,9 @@ public class ChessPieceTest {
     assertFalse(pawn_w1.canKill(rook_b1));
 
 
-    ChessPiece test_pawn_b_1 = new Pawn(1,4,BW.BLACK);
-    ChessPiece test_pawn_b_2 = new Pawn(1,2,BW.BLACK);
-    ChessPiece test_pawnw_1 = new Pawn(3,4,BW.WHITE);
+    ChessPiece test_pawn_b_1 = new Pawn(1,4, BorW.BLACK);
+    ChessPiece test_pawn_b_2 = new Pawn(1,2, BorW.BLACK);
+    ChessPiece test_pawnw_1 = new Pawn(3,4, BorW.WHITE);
 
 
     assertEquals(true, pawn_w1.canKill(test_pawn_b_1));

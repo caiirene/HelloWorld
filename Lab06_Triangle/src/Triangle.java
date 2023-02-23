@@ -12,18 +12,52 @@ public class Triangle extends AbstractShape {
     }
   }
 
+  public String toString() {
+    String str = "this triangle has three points at " +
+        "("+this.reference.getX()+","+this.reference.getY()+")" +
+        "("+this.reference2.getX()+","+this.reference2.getY()+")" +
+        "("+this.reference3.getX()+","+this.reference3.getY()+")";
+    return str;
+  }
+
   @Override
   public double area() {
-    return 0;
+    if (this.reference.getX() == this.reference2.getX()
+        && this.reference2.getX()==this.reference3.getX()) {
+      return 0;
+    }
+    else if (this.reference.getY() == this.reference2.getY()
+        && this.reference2.getY()==this.reference3.getY()) {
+      return 0;
+    }
+
+    double p = this.perimeter() / 2.0;
+
+    double a = this.reference.getDistanceFromAnother2DPoint(this.reference2);
+    double b = this.reference2.getDistanceFromAnother2DPoint(this.reference3);
+    double c = this.reference3.getDistanceFromAnother2DPoint(this.reference);
+
+    double area = Math.pow(p*(p-a)*(p-b)*(p-c),0.5);
+
+    return area;
   }
 
   @Override
   public double perimeter() {
-    return 0;
+    double side_1 = this.reference.getDistanceFromAnother2DPoint(this.reference2);
+    double side_2 = this.reference2.getDistanceFromAnother2DPoint(this.reference3);
+    double side_3 = this.reference3.getDistanceFromAnother2DPoint(this.reference);
+
+    double perimeter = side_1+side_2+side_3;
+    return perimeter;
   }
 
   @Override
   public Shape resize(double factor) {
-    return null;
+    double realFactor = Math.sqrt(factor);
+    this.reference2.extendFromAnother(realFactor, this.reference);
+    this.reference3.extendFromAnother(realFactor, this.reference);
+    return this;
   }
+  /*question2*/
 }

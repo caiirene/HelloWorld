@@ -27,4 +27,8 @@ public abstract class AbstractShape implements Shape {
       return 0;
     }
   }
+  /*question3: change here will be "if (perimeterThis<perimeterOther)".
+  Of course, redefine those two variables as well.
+  If we don't have this abstract class, we just add this compareTo into three concrete classes.
+   */
 }

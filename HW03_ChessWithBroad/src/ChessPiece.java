@@ -19,7 +19,7 @@ public interface ChessPiece {
    * this return the color
    * @return BW
    */
-  BW getBW();
+  BorW getBW();
 
   /**
    * this return true or false for if this chess piece can move to certain position

@@ -1,6 +1,6 @@
 public class King extends AbstractChessPiece{
 
-  public King(int x, int y, BW blackOrWhite) {
+  public King(int x, int y, BorW blackOrWhite) {
     super(x,y,blackOrWhite,Type.KING);
   }
 

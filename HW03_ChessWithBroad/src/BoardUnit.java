@@ -8,7 +8,7 @@ public class BoardUnit {
 
   private boolean hasPiece;
   private ChessPiece piece;
-  private BW unitBoardColor; //这就是该个格子的底色
+  private BorW unitBoardColor; //这就是该个格子的底色
 
   /*
   对于这个初始化，这么理解——我只想创建一个格子，至于格子里的内容，需要使用setter来设置

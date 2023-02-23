@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AChess/AChess.iml" filepath="$PROJECT_DIR$/AChess/AChess.iml" />
       <module fileurl="file://$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" filepath="$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/HW01_Fraction/HW01_Fraction.iml" filepath="$PROJECT_DIR$/HW01_Fraction/HW01_Fraction.iml" />
       <module fileurl="file://$PROJECT_DIR$/HW02_Chess/HW02_Chess.iml" filepath="$PROJECT_DIR$/HW02_Chess/HW02_Chess.iml" />

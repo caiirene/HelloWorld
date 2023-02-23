@@ -4,7 +4,7 @@
 
 public abstract class AbstractChessPiece implements ChessPiece {
 
-  protected BW color;
+  protected BorW color;
   protected int rowPos;
   protected int coloumPos;
 
@@ -20,7 +20,7 @@ public abstract class AbstractChessPiece implements ChessPiece {
    * @param blackOrWhite
    * @param chessType e.g.BISHOP/ QUEEN......
    */
-  public AbstractChessPiece(int x, int y, BW blackOrWhite, Type chessType) {
+  public AbstractChessPiece(int x, int y, BorW blackOrWhite, Type chessType) {
     checkIndex(x, y);
     this.rowPos = x;
     this.coloumPos = y;
@@ -46,7 +46,7 @@ public abstract class AbstractChessPiece implements ChessPiece {
   }
 
   @Override
-  public BW getBW() {
+  public BorW getBW() {
     return this.color;
   }
 
