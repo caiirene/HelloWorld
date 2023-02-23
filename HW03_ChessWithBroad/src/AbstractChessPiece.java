@@ -17,7 +17,7 @@ public abstract class AbstractChessPiece implements ChessPiece {
    * and in those class, they will provide chessType by default
    * @param x the number on row (注意：这里是指从横坐标上读取到的数，而不是行数)
    * @param y the number read from y-axis
-   * @param blackOrWhite
+   * @param blackOrWhite blackOrWhite
    * @param chessType e.g.BISHOP/ QUEEN......
    */
   public AbstractChessPiece(int x, int y, BorW blackOrWhite, Type chessType) {
@@ -62,15 +62,6 @@ public abstract class AbstractChessPiece implements ChessPiece {
     }
     return;
   }
-
-  /*public boolean canMove2(int x, int y){
-    boolean canMove2_ReturnVal = false;
-    if (!canMove(x,y)) {return false;}
-
-    return canMove2_ReturnVal;
-  }
-   */
-
 
   /**
    * since all pieces need toString, but each toString are different,

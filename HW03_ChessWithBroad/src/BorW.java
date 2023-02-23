@@ -1,3 +1,7 @@
+/**
+ * THIS ENUM JUST HAVE BLACK WHITE FOR CHESSPIECE
+ */
+
 public enum BorW {
   BLACK,
   WHITE

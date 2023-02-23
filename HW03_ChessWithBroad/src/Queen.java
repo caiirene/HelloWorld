@@ -10,7 +10,7 @@ import static java.lang.Math.abs;
 public class Queen extends AbstractChessPiece {
 
   /**
-   * this construct an object of bishop chess
+   * this construct an object of queen chess
    * at x,y position
    * and color in your choice
    * @param x pos

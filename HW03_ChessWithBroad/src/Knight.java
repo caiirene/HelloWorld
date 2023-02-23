@@ -9,6 +9,14 @@ import static java.lang.Math.abs;
 
 public class Knight extends AbstractChessPiece{
 
+
+  /**
+   * constructor
+   * need 横纵坐标, BW
+   * it provides type as knight to AbstractChessPiece automaticlly
+   * @param x
+   * @param y
+   */
   public Knight(int x, int y, BorW blackOrWhite) {
     super(x,y,blackOrWhite,Type.KNIGHT);
   }

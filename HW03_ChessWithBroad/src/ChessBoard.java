@@ -12,15 +12,15 @@ public interface ChessBoard {
   /**
    * put one piece to board,
    * the position info are taken from piece itself
-   * @param a
+   * @param a ChessPiece object
    */
   void setPieceOntoBoard(ChessPiece a);
 
 
   /**
    * provide some info about ChessPiece object that on certain position
-   * @param x
-   * @param y
+   * @param x pos on x-axis
+   * @param y pos on y-axis
    * @return ChessPiece
    */
   ChessPiece getPieceOnPosition(int x, int y);
@@ -29,9 +29,9 @@ public interface ChessBoard {
   /**
    * check a piece can move to certain postion
    * it checks is there any other piece blocking in the way
-   * @param a
-   * @param x
-   * @param y
+   * @param a chessPiece object
+   * @param x pos on x-axis
+   * @param y pos on y-axis
    * @return t/f
    */
   boolean canMove2(ChessPiece a, int x, int y);

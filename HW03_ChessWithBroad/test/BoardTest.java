@@ -194,5 +194,9 @@ public class BoardTest {
     assertEquals(excepted, real);
   }
 
+  @Test
+  public void test_the_Array_constructor () {
+    ChessBoard test = new Board(true, true,true);
+  }
 
 }

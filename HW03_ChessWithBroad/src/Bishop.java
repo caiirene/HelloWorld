@@ -13,8 +13,8 @@ public class Bishop extends AbstractChessPiece {
    * constructor
    * need 横纵坐标, BW
    * it provides type as bishop to AbstractChessPiece automaticlly
-   * @param x
-   * @param y
+   * @param x reading on x-axis
+   * @param y reading on y-axis
    * @param color
    */
   public Bishop (int x, int y, BorW color) {
@@ -24,8 +24,8 @@ public class Bishop extends AbstractChessPiece {
 
   /**
    * it checks this object can move to a provided 横纵坐标
-   * @param x
-   * @param y
+   * @param x reading on x-axis
+   * @param y reading on y-axis
    * @return true or false
    */
   @Override

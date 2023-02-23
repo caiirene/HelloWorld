@@ -30,6 +30,30 @@ public class Board implements ChessBoard {
   }
 
   /**
+   * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   * this is just a Array<></>version of constructor
+   * it only constructs an 8*8board
+   * no other method related to these
+   * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   * @param tORf doesn't matter
+   * @param an doesn't matter
+   * @param other doesn't matter
+   */
+  public Board(boolean tORf, boolean an, boolean other) {
+
+    this.board = new ArrayList<ArrayList<ChessPiece>>();
+    for (int i = 0; i < 8; i++) {
+      ArrayList<ChessPiece> row = new ArrayList<ChessPiece>();
+      for (int j = 0; j < 8; j++) {
+        row.add(null); // initialize all cells to null
+      }
+      board.add(row);
+    }
+  }
+
+
+
+  /**
    * second constructor
    * take any int param to make a difference
    * it will use initializeTheBoard() to put all piece to default position
@@ -69,6 +93,7 @@ public class Board implements ChessBoard {
       this.wholeBroad[i][4] = new BoardUnit();
       this.wholeBroad[i][5] = new BoardUnit();
       //清空一下中间4行
+      //这里看上去无用，看上去新棋盘总是空的，但是在棋盘上有棋子时，也可以使用这个method来重置
     }
 
     this.wholeBroad[0][7].setPiece(new Rook(0, 7, BorW.BLACK));
@@ -88,7 +113,7 @@ public class Board implements ChessBoard {
    * 这个似乎以后要去掉，因为如果吃子，是可以直接使用这个method的，
    * 否则吃子时，又要单独再判断
    * 画蛇添足！！！但不改了，就这样吧
-   * @param a
+   * @param a ChessPiece object
    * @throws IllegalArgumentException
    */
   @Override
