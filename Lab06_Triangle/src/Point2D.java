@@ -68,15 +68,32 @@ public class Point2D {
     this.y = this.y + increment;
   }
 
+  /**
+   * this method will take another Point2D and assume that point is origin
+   * and then change the xy in this object
+   * @param another
+   */
   private void markAsFromOrigin(Point2D another) {
     this.x = this.x-another.getX();
     this.y = this.y-another.getY();
   }
 
+  /**
+   * this method will take a factor
+   * and change the xy by time the factor
+   * @param factor
+   */
   private void extendFromOrigin(double factor) {
     this.x = this.x * factor;
     this.y = this.y * factor;
   }
+
+  /**
+   * this is a combo of markAsOrigin and extendFromOrigin
+   * it extend the xy from a given point
+   * @param factor
+   * @param another
+   */
   protected void extendFromAnother(double factor, Point2D another) {
     markAsFromOrigin(another);
 
@@ -85,4 +102,22 @@ public class Point2D {
     increaseX(another.getX());
     increaseY(another.getY());
   }
+
+  /**
+   * this calculate the 斜率 between two points
+   * 如果在同一竖线，斜率为无穷（因为分母为0）
+   * @param another
+   * @return
+   */
+  public double getVector(Point2D another) {
+    if (this.x - another.getX() != 0) {
+    double vactor = (another.getY() - this.y)/(another.getX() - this.x);
+    vactor = Math.abs(vactor);
+    return vactor;}
+    else {
+      //System.out.println("这两个点在一条竖线上，斜率为无穷");
+      return 999999999;
+    }
+  }
+
 }
