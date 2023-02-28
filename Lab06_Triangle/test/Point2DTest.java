@@ -88,7 +88,6 @@ public class Point2DTest {
   }
 
   /**
-
    Test method for {@link Point2D#increaseX(double)}.
    */
   @Test

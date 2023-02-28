@@ -1,4 +1,5 @@
 import java.util.EmptyStackException;
+import java.util.Objects;
 
 /**
  * an object called PetRock it has name and happy or not
@@ -96,4 +97,24 @@ public class PetRock {
         + ".\n It is unhappy at beginning." +
         "You can make it happy if you use playWithEE() method.";
   }
-}
+
+
+    // Getter and setter methods for name and isHappy...
+
+    //@Override
+    public boolean equals(Object other) {
+      if (other instanceof PetRock) {
+        PetRock otherRock = (PetRock) other;
+        return this.name.equals(otherRock.getName())
+            && this.happy == otherRock.isHappy();
+      } else {
+        return false;
+      }
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(name,happy);
+    }
+  }
+

@@ -14,9 +14,7 @@ public class ListADTImpl<T> implements ListADT<T> {
   }
 
   //a private constructor that is used internally (see map)
-  private ListADTImpl(GenericListADTNode<T> head) {
-    this.head = head;
-  }
+  private ListADTImpl(GenericListADTNode<T> head) { this.head = head; }
 
   @Override
   public void addFront(T b) {

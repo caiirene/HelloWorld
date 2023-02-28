@@ -1,8 +1,5 @@
-public class GetVector {
+public interface GetVector<T> {
 
-  public double getVector(Point2D a, Point2D b) {
-    double vector = (a.getX()-b.getX())/(a.getY()-b.getY());
-    return vector;
-  }
+  public double getVectorr(T c, T d);
 
 }

@@ -27,4 +27,5 @@ public abstract class AbstractShape implements Shape {
       return 0;
     }
   }
+
 }

@@ -120,4 +120,10 @@ public class Point2D {
     }
   }
 
+  public double gettV(Point2D a, Point2D b) {
+    GetVector<Point2D> myG = (c, d) -> c.getX() - d.getX();
+
+    return  myG.getVectorr(a,b);
+  }
+
 }
