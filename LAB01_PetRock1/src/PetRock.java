@@ -35,6 +35,7 @@ public class PetRock {
 
   /**
    * this method return this object is happy or not
+   *
    * @return
    */
   public boolean isHappy() {
@@ -42,8 +43,8 @@ public class PetRock {
   }
 
   /**
-   * it is a method to change the happy status
-   * after use this method, this petrock object's happy will become true
+   * it is a method to change the happy status after use this method, this petrock object's happy
+   * will become true
    */
   public void playWithEE() {
     happy = true;
@@ -51,6 +52,7 @@ public class PetRock {
 
   /**
    * print i am happy no matter happy or not
+   *
    * @return nothing
    */
   public String printHappyMessage() {
@@ -62,6 +64,7 @@ public class PetRock {
 
   /**
    * give a little more info for this object, which is the favorate num
+   *
    * @return int 666
    */
   public int getFavorateNumber() {
@@ -80,6 +83,7 @@ public class PetRock {
 
   /**
    * just another try on return null
+   *
    * @return
    */
   public int getNull() {
@@ -90,6 +94,7 @@ public class PetRock {
 
   /**
    * to string: include name, favorate num, and introdue to use play method
+   *
    * @return string intro for this petrock object
    */
   public String toString() {
@@ -98,23 +103,26 @@ public class PetRock {
         "You can make it happy if you use playWithEE() method.";
   }
 
+  // Getter and setter methods for name and isHappy...
 
-    // Getter and setter methods for name and isHappy...
-
-    //@Override
-    public boolean equals(Object other) {
-      if (other instanceof PetRock) {
-        PetRock otherRock = (PetRock) other;
-        return this.name.equals(otherRock.getName())
-            && this.happy == otherRock.isHappy();
-      } else {
-        return false;
-      }
+  //@Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof PetRock)) {
+      return false;
     }
 
-    @Override
-    public int hashCode() {
-      return Objects.hash(name,happy);
-    }
+    PetRock other = (PetRock) o;
+    return this.name.equals(other.getName())
+        && this.happy == other.isHappy();
+
   }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, happy);
+  }
+}
 
