@@ -86,5 +86,8 @@ public class PersonTest {
     // Hence, no negative tests, despite this be
     assertEquals(benlerner, identicaltwin);
     assertEquals(benlerner, benlerner);
+    Person irene = new Person("irene", "cai", 1998);
+    assertNotEquals(benlerner,irene);
+
   }
 }

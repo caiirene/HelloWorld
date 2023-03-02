@@ -107,7 +107,7 @@ public class LibraryTest {
           "\n-----\n" + book3.toString();
     assertEquals(expected, myLibrary.toString());
     //FLAW: once again, suggest to have two tests
-    //FIXE: add one more book by useing addToLibrary() method, then test
+    //FIX: add one more book by useing addToLibrary() method, then test
   }
 
   /**
@@ -126,5 +126,5 @@ public class LibraryTest {
     assertEquals(expected, myLibrary.toString());
    }
    //FLAW: once again, suggest to have two tests
-   //FIXE: add one more book by useing addToLibrary() method, then sort again, then test
+   //FIX: add one more book by useing addToLibrary() method, then sort again, then test
 }
