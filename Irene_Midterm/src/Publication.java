@@ -37,11 +37,15 @@ public interface Publication {
    * @return boolean, true if the authors are the same Person, else false
    */
   boolean sameAuthor(Publication other);
+  //FLAW: suggest to implement in AbstractPublication, so we can just implement once
+  //FIXED: add to AbstractPublication and remove from book and magazine
 
   /**
    * Method to return the kind of Publication as a String
    * <p>
    * @return String, the kind of publication (eg "Book" or "Magazine")
    */
-  String kind();
+  String getKind();
+  //FLAW: suggest to use getKind() because that is a verb
+  //FIXED: String getKind();
 }

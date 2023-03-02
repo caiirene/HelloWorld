@@ -56,7 +56,17 @@ public abstract class AbstractPublication implements Publication {
    * @return String, based on the name of the subClass
    */
   @Override
-  public final String kind() {
+  public final String getKind() {
     return this.getClass().getName() ;
+  }
+
+
+  @Override
+  public boolean sameAuthor(Publication other) {
+    // Get the two authors and hand to equals
+    Person author1 = this.getAuthor();
+    // FLAW? suggest to use author or this.author, but it's ok to use getAuthor()
+    Person author2 = other.getAuthor();
+    return author1.equals(author2);
   }
 }

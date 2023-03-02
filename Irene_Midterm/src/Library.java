@@ -5,7 +5,10 @@ import java.util.*;
  *  <p>
  *  Uses ArrayList.sort(Comparator<Publication>) to sort by author last name
  */
-public class Library {
+
+//FLAW: maybe you want an interface for Library?
+//FIXED: I added it
+public class Library implements LibInterface{
    private ArrayList<Publication> myLibrary;
    //Original: ArrayList<Publication> myLibrary;
    //FLAW: suggest to add private instead default

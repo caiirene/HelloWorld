@@ -33,13 +33,18 @@ public class Book extends AbstractPublication {
    * @param other, the other Publication
    * @return boolean, true iff the authors are equal
    */
+
+  /*
   @Override
   public boolean sameAuthor(Publication other) {
     // Get the two authors and hand to equals
     Person author1 = this.getAuthor();
+    // FLAW? suggest to use author or this.author, but it's ok to use getAuthor()
     Person author2 = other.getAuthor();
     return author1.equals(author2);
   }
+
+   */
 
   /**
    * Return a formatted string that contains key information about this.
@@ -55,10 +60,16 @@ public class Book extends AbstractPublication {
    */
   public String toString() {
     String str;
-    str = "Kind: "+this.kind()+"\nTitle: "+this.title+"\nAuthor: "+this.author+
+    str = "Kind: "+this.getKind()+"\nTitle: "+this.title+"\nAuthor: "+this.author+
           "\nYear: "+this.year+String.format("\nPrice: %.2f",this.price);
     return str;
   }
+  //FLAW: suggest to change lines, but that's ok
+  //FIXED: "Kind: "+this.getKind()+
+  //       "\nTitle: "+this.title+
+  //       "\nAuthor: "+this.author+
+  //       "\nYear: "+this.year+
+  //       String.format("\nPrice: %.2f",this.price);
 
   /**
    * Books to be considered equal if Title, Author, and publication Year are.
@@ -72,6 +83,35 @@ public class Book extends AbstractPublication {
 //    return false;
 //  }
 
+  //FLAW: equal() method needed here
+  @Override
+  public boolean equals(Object other) {
+    // Check if identical
+    if (this == other)
+      return true;
+    // Check if null
+    if (other == null)
+      return false;
+    //FLAW: again, suggest not use
+    //FIX: use try {
+    //            some code
+    //  }
+    //  catch(something) {
+    //    return false;
+    //  }
+    // Check type compatibility
+    if (!(other instanceof Book))
+      return false;
+    // Cast to Magazine type
+    Book other_book = (Book) other;
+    // Compare fields
+    return this.title.equals(other_book.title)
+        && this.author.equals(other_book.author)
+        && this.year == other_book.getYear()
+        && Math.abs(this.price - other_book.price) < 0.001;
+  }
+
+
   /**
    * Override hashCode since overriding equals
    * <p>
@@ -81,6 +121,5 @@ public class Book extends AbstractPublication {
   @Override
   public int hashCode() {
      return Objects.hash(title, author, year);
-
   }
 }

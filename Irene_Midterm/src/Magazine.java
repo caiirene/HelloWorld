@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Represents a Magazine, which has title, author, year, month, price.
  * <p>
@@ -42,6 +44,8 @@ public class Magazine extends AbstractPublication {
    * @param other, the other Publication
    * @return boolean, true iff the authors are equal
    */
+
+  /*
   @Override
   public boolean sameAuthor(Publication other) {
     // Get the two authors and hand to equals
@@ -49,6 +53,8 @@ public class Magazine extends AbstractPublication {
     Person author2 = other.getAuthor();
     return author1.equals(author2);
   }
+
+   */
 
   /**
    * Method toString() returns a formatted String containing information about
@@ -66,7 +72,7 @@ public class Magazine extends AbstractPublication {
   @Override
   public String toString() {
     String str;
-    str = "Kind: " + this.kind() +
+    str = "Kind: " + this.getKind() +
           "\nTitle: " + this.title +
           "\nAuthor: " + this.author.toString() +
           "\nYear: " + this.year +
@@ -92,12 +98,32 @@ public class Magazine extends AbstractPublication {
     // Check type compatibility
     if (!(other instanceof Magazine))
       return false;
+    //FLAW: again, suggest not use
+    //FIX: use try {
+    //            some code
+    //  }
+    //  catch(something) {
+    //    return false;
+    //  }
     // Cast to Magazine type
     Magazine other_mag = (Magazine) other;
     // Compare fields
     return this.title.equals(other_mag.title)
         && this.author.equals(other_mag.author)
-        && this.year == other_mag.year
-        && Math.abs(this.price - other_mag.price) < 0.001;
+        && this.year == other_mag.year//FLAW: suggest to use getYear()
+                                       //FIXED: && this.year == other_mag.getYear();
+        && Math.abs(this.price - other_mag.price) < 0.001
+        && this.month == other_mag.getMonth();
+        //FLAW: how about month
+        //FIXED: && this.month == other_mag.getMonth();
   }
+
+  //FLAW: I think you need hashcode() method
+  //FIXED:
+  @Override
+  public int hashCode() {
+     return Objects.hash(title, author, year);
+  }
+
+
 }

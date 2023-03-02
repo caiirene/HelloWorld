@@ -96,7 +96,7 @@ public class AbstractPublicationTest {
    */
   @Test
   public void testKind() {
-    assertEquals("Book", book1.kind());
-    assertEquals("Magazine", mag1.kind());
+    assertEquals("Book", book1.getKind());
+    assertEquals("Magazine", mag1.getKind());
   }
 }

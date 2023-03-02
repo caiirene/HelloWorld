@@ -38,7 +38,20 @@ public class BookTest {
         Title: Beaches
         Author: Pat Conroy
         Year: 2020
-        Price: 500""";
+        Price: 5.00""";
+    //FLAW: I think a book price at 500 is not normal
+    //FIXED: Price: 5.00""";
     assertEquals(expected,book1.toString());
+  }
+
+  //FLAW: suggest to test equal() and hashcode() as well
+  //FIXED:
+  @Test
+  public void testEqual() {
+    Book book4 = new Book("Sunsets", pat, 2021, 25.00);
+    assertEquals(book4,book2);
+    Person pat2 = new Person("Pat", "Conroy", 1948);
+    Book book5 = new Book("Sunsets", pat2, 2021, 25.00);
+    assertEquals(book5,book2);
   }
 }

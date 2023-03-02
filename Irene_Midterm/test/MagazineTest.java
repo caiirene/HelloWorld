@@ -42,4 +42,26 @@ public class MagazineTest {
     assertEquals(expected, mag1.toString());
     assertNotEquals(expected, mag2.toString());
   }
+
+  //FLAW: suggest to add getMonth() test
+  //FIXED:
+  @Test
+  public void testGetMonth() {
+    assertEquals(Month.MARCH,mag1.getMonth());
+    assertEquals(Month.SEPTEMBER,mag2.getMonth());
+  }
+
+
+  //FLAW: suggest to test equal() and hashcode as well
+  //FIXED:
+  @Test
+  public void testEqual() {
+    Magazine mag4 = new Magazine("Beaches Issue", pat, 2020,
+        Month.MARCH, 5.0);
+    assertEquals(mag4,mag1);
+    Person pat2 = new Person("Pat", "Conroy", 1948);
+    Magazine mag5 = new Magazine("Beaches Issue", pat2, 2020,
+        Month.MARCH, 5.0);
+    assertEquals(mag5,mag1);
+  }
 }

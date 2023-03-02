@@ -1,3 +1,4 @@
+import java.lang.reflect.Method;
 import java.util.Objects;
 
 /**
@@ -74,12 +75,31 @@ class Person {
     // Check type compatibility
     if (!(other instanceof Person))
       return false;
+    try {
+      // Similar to dynamic-language sending a respondsTo: message
+      // avoid instanceof; ask if instance can respond to the protocol
+      Class<?> method = other.getClass();
+      // do calculation
+      Person person = (Person) other;
+      return this.firstName.equals(person.firstName)
+          && this.lastName.equals(person.lastName)
+          && this.yearOfBirth == person.yearOfBirth;
+    }
+    catch(ClassCastException ex) {
+      // Not a person_fixed object...can't compare them
+      return false;
+    }
+    //FLAW: suggest to not use instanceof
+    //FIXED: first we want to try if the classes are the same, then check equal
+    /*
     // Cast to Person type
-    Person person = (Person) other;
+    Person person_fixed = (Person) other;
     // Compare relevant fields
-    return this.firstName.equals(person.firstName)
-        && this.lastName.equals(person.lastName)
-        && this.yearOfBirth == person.yearOfBirth;
+    return this.firstName.equals(person_fixed.firstName)
+        && this.lastName.equals(person_fixed.lastName)
+        && this.yearOfBirth == person_fixed.yearOfBirth;
+
+     */
   }
 
   /**

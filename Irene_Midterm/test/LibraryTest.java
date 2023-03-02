@@ -74,6 +74,8 @@ public class LibraryTest {
   public void testGetFromLibrary() {
     // Additional tests in related methods
     assertEquals(book2, myLibrary.getFromLibrary(2));
+    //FLAW: suggest to add one more test for each
+    //FIXED: assertEquals(mag1, myLibrary.getFromLibrary(1));
   }
 
   /**
@@ -104,6 +106,8 @@ public class LibraryTest {
           "\n-----\n" + book2.toString() +
           "\n-----\n" + book3.toString();
     assertEquals(expected, myLibrary.toString());
+    //FLAW: once again, suggest to have two tests
+    //FIXE: add one more book by useing addToLibrary() method, then test
   }
 
   /**
@@ -121,4 +125,6 @@ public class LibraryTest {
            "\n-----\n" + book2.toString() ;
     assertEquals(expected, myLibrary.toString());
    }
+   //FLAW: once again, suggest to have two tests
+   //FIXE: add one more book by useing addToLibrary() method, then sort again, then test
 }
