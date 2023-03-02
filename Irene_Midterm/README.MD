@@ -1,7 +1,7 @@
 FIXED: 
 1. Libary: field(private)
 2. Publishtion interface: getKind()
-3. Person: add equal() method
+3. Person: fixed equal() method
 4. BookTest: toString 5.00
 5. Libary: add interface
 6. Book: equal() method
