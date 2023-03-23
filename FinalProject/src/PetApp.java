@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PetApp {
+
   private JFrame frame;
   private JLabel petImage;
   private JButton eatButton;
@@ -13,6 +14,8 @@ public class PetApp {
   private JButton growUpButton;
   private JButton askDreamButton;
   private Pet pet;
+  private Timer blinkTimer;
+
 
   public static void main(String[] args) {
     EventQueue.invokeLater(() -> {
@@ -37,9 +40,12 @@ public class PetApp {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().setLayout(null);
 
+    // Create a Pet object
+    pet = new Pet();
+
     // Load the pet image
     ImageIcon petImageIcon = new ImageIcon(pet.getImagePath());
-    JLabel petImage = new JLabel(petImageIcon);
+    petImage = new JLabel(petImageIcon);
     int width = petImageIcon.getIconWidth();
     int height = petImageIcon.getIconHeight();
     int x = 50;
@@ -68,20 +74,65 @@ public class PetApp {
     Toy toy = new Toy("Pet Toy");
     BathTool bathTool = new BathTool("Pet Bath Tool");
 
+
+
+    // Blinking effect
+    ImageIcon openEyeIcon = new ImageIcon(pet.getOpenEyeImagePath());
+    ImageIcon closedEyeIcon = new ImageIcon(pet.getClosedEyeImagePath());
+    Timer blinkTimer = new Timer(1000, new ActionListener() {
+      boolean isOpen = true;
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        if (isOpen) {
+          petImage.setIcon(closedEyeIcon);
+        } else {
+          petImage.setIcon(openEyeIcon);
+        }
+        isOpen = !isOpen;
+      }
+    });
+
+    blinkTimer.start();
+
+
     // Add action listeners to the buttons
     feedButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        // Pause blinking timer
+        blinkTimer.stop();
+
+        // Perform the feed action and update the pet image
         pet.eat(food);
-        // Update GUI if needed
+        ImageIcon newPetImageIcon = new ImageIcon("C:\\Users\\asus\\Documents\\GitHub\\cs5004-irene-new\\FinalProject\\src\\222.png");
+        petImage.setIcon(newPetImageIcon);
+
+        // Force components to repaint
+        frame.getContentPane().repaint();
+
+        // Use a Timer to resume the blinking timer after 5 seconds
+        Timer resumeBlinkingTimer = new Timer(5000, new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            // Resume the blinking timer
+            blinkTimer.start();
+          }
+        });
+
+        // Set the resumeBlinkingTimer to be a one-time timer
+        resumeBlinkingTimer.setRepeats(false);
+        resumeBlinkingTimer.start();
       }
     });
+
 
     sleepButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        pet.sleep(bathTool);
-        // Update GUI if needed
+        pet.sleep();
+        pet.setImagePath("C:\\Users\\asus\\Documents\\GitHub\\cs5004-irene-new\\FinalProject\\src\\222.png");
+        updatePetImage();
       }
     });
 
@@ -89,9 +140,12 @@ public class PetApp {
       @Override
       public void actionPerformed(ActionEvent e) {
         pet.play(toy);
-        // Update GUI if needed
+        pet.setImagePath("C:\\Users\\asus\\Documents\\GitHub\\cs5004-irene-new\\FinalProject\\src\\111.png");
+        updatePetImage();
       }
     });
+
+
   }
 
   /*
@@ -145,4 +199,10 @@ public class PetApp {
   }
 
    */
+
+
+  private void updatePetImage() {
+    ImageIcon newPetImageIcon = new ImageIcon(pet.getImagePath());
+    petImage.setIcon(newPetImageIcon);
+  }
 }
