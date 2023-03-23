@@ -1,0 +1,10 @@
+1. I want to write a desktop pet project by java
+2. this project should be able to be used on Window system
+3. I need a Pet Class. it should have five method
+    a) eat (pet will become hungry as time pass, user need to feed them, make them full)
+    b) sleep (pet will become unhealthy as time pass, user should let them sleep)
+    c) play (pet will become unhappy as time pass, user should play with them)
+    d) growUp (when full, healthy, and happy)
+    e) askYourDream (ask user's input, and store it)
+4. I need a Class of items, subclass: food, toy, bath tool(for sleep).
+5. Of course I need images display when the program running. I will have images of the pet, and a panel to feed/sleep/play with the pet.
