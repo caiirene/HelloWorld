@@ -66,7 +66,7 @@ public class MyStackTest {
       stack.pop();
       stack.top();
     });
-    //这里lambda把空参数传入到一整段代码中
+    //这里lambda把空参数传入到一整段代码中，然后要运行完一整段代码，才会assertThrows
   }
 
   /**
