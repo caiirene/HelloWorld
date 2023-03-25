@@ -14,45 +14,55 @@ public class MyStack<T> implements MyStackInterface<T> {
    * Constructs an empty MyStack instance.
    */
   public MyStack() {
-    stack = new ArrayList<>();
+    this.stack = new ArrayList<>();
   }
 
   /**
-   * {@inheritDoc}
+   * Adds an element to the top of the stack.
+   *
+   * @param data The element to be added to the stack.
    */
   @Override
   public void push(T data) {
-    stack.add(data);
+    this.stack.add(data);
   }
 
   /**
-   * {@inheritDoc}
+   * Removes the top element of the stack and returns it.
+   *
+   * @return The top element of the stack.
+   * @throws RuntimeException If the stack is empty.
    */
   @Override
   public T pop() {
     if (empty()) {
       throw new EmptyStackException();
     }
-    return stack.remove(stack.size() - 1);
+    return this.stack.remove(stack.size() - 1);
   }
 
   /**
-   * {@inheritDoc}
+   * Returns the top element of the stack without removing it.
+   *
+   * @return The top element of the stack.
+   * @throws RuntimeException If the stack is empty.
    */
   @Override
   public T top() {
     if (empty()) {
       throw new EmptyStackException();
     }
-    return stack.get(stack.size() - 1);
+    return this.stack.get(stack.size() - 1);
   }
 
   /**
-   * {@inheritDoc}
+   * Checks whether the stack is empty or not.
+   *
+   * @return true if the stack is empty, false otherwise.
    */
   @Override
   public boolean empty() {
-    return stack.isEmpty();
+    return this.stack.isEmpty();
   }
 
   /**
