@@ -9,60 +9,84 @@ import java.util.EmptyStackException;
  */
 public class MyStack<T> implements MyStackInterface<T> {
   private ArrayList<T> stack;
+  private int stackSize;
 
   /**
    * Constructs an empty MyStack instance.
    */
   public MyStack() {
     this.stack = new ArrayList<>();
+    this.stackSize = 0;
   }
 
   /**
-   * Adds an element to the top of the stack.
+   * just a getter for size
+   * @return int size of mystack
+   */
+  public int getStackSize(){
+    return this.stackSize;
+  }
+
+  /**
+   * just a getter for stack, which is an arraylist
+   * @return arraylist object
+   */
+  public ArrayList<T> getStack(){
+    return this.stack;
+  }
+
+  /**
+   * adds element x to the stack, returning void
+   * first element can be any type, other added elements should be same type as first one
    *
-   * @param data The element to be added to the stack.
    */
   @Override
-  public void push(T data) {
-    this.stack.add(data);
+  public void push(T object) {
+
+    this.stack.add(object);
+    this.stackSize++;
   }
 
   /**
-   * Removes the top element of the stack and returns it.
+   * removes the last element of the stack and returns it
    *
-   * @return The top element of the stack.
-   * @throws RuntimeException If the stack is empty.
+   * @return The last element in this stack object's array list.
+   * @throws EmptyStackException If the stack is empty.
    */
   @Override
   public T pop() {
-    if (empty()) {
+    if (this.stackSize == 0) {
       throw new EmptyStackException();
     }
-    return this.stack.remove(stack.size() - 1);
+    T remember = this.stack.get(stackSize - 1);
+    this.stack.remove(stackSize - 1);
+    this.stackSize--;
+    return remember;
   }
 
   /**
-   * Returns the top element of the stack without removing it.
+   * method returns the last element of the stack, without removing it
    *
-   * @return The top element of the stack.
-   * @throws RuntimeException If the stack is empty.
+   * @return The last element in this stack object's array list.
+   * @throws EmptyStackException If the stack is empty.
    */
   @Override
   public T top() {
-    if (empty()) {
+    if (this.stackSize == 0) {
       throw new EmptyStackException();
     }
-    return this.stack.get(stack.size() - 1);
+    int lastIndex = this.stackSize - 1;
+    return this.stack.get(lastIndex);
   }
 
   /**
-   * Checks whether the stack is empty or not.
+   * returns boolean, indicating whether the stack is empty or not
    *
-   * @return true if the stack is empty, false otherwise.
+   * @return true or false.
    */
   @Override
   public boolean empty() {
-    return this.stack.isEmpty();
+    return (this.stackSize == 0);
   }
 
   /**
@@ -72,11 +96,13 @@ public class MyStack<T> implements MyStackInterface<T> {
    */
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Stack: ");
-    for (T element : stack) {
-      sb.append(element).append(" ");
+    String returnStr = "Stack: ";
+
+    for (int i = 0; i < stackSize; i++) {
+      returnStr += stack.get(i).toString();
+      returnStr += " ";
     }
-    return sb.toString().trim();
+    return returnStr;
   }
+
 }

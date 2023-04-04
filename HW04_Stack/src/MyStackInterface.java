@@ -1,38 +1,53 @@
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+
 /**
- * MyStackInterface represents a generic stack interface
- * that allows operations such as push, pop, top, and checking if the stack is empty.
+ * interface for mystack
+ * include method: push, pop, top, empty
  *
  * @param <T> The type of elements stored in the stack.
  */
 public interface MyStackInterface<T> {
 
   /**
-   * Adds an element to the top of the stack.
+   * just a getter for size
+   * @return int size of mystack
+   */
+  int getStackSize();
+
+  /**
+   * just a getter for stack, which is an arraylist
+   * @return arraylist object
+   */
+  ArrayList<T> getStack();
+
+  /**
+   * adds element x to the stack, returning void
+   * first element can be any type, other added elements should be same type as first one
    *
-   * @param data The element to be added to the stack.
    */
   void push(T data);
 
   /**
-   * Removes the top element of the stack and returns it.
+   * removes the last element of the stack and returns it
    *
-   * @return The top element of the stack.
-   * @throws RuntimeException If the stack is empty.
+   * @return The last element in this stack object's array list.
+   * @throws EmptyStackException If the stack is empty.
    */
   T pop();
 
   /**
-   * Returns the top element of the stack without removing it.
+   * method returns the last element of the stack, without removing it
    *
-   * @return The top element of the stack.
-   * @throws RuntimeException If the stack is empty.
+   * @return The last element in this stack object's array list.
+   * @throws EmptyStackException If the stack is empty.
    */
   T top();
 
   /**
-   * Checks whether the stack is empty or not.
+   * returns boolean, indicating whether the stack is empty or not
    *
-   * @return true if the stack is empty, false otherwise.
+   * @return true or false.
    */
   boolean empty();
 }
