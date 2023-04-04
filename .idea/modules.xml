@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AChess/AChess.iml" filepath="$PROJECT_DIR$/AChess/AChess.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AFinalProject/AFinalProject.iml" filepath="$PROJECT_DIR$/AFinalProject/AFinalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" filepath="$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/ChatGPT/ChatGPT.iml" filepath="$PROJECT_DIR$/ChatGPT/ChatGPT.iml" />
       <module fileurl="file://$PROJECT_DIR$/FinalProject/FinalProject.iml" filepath="$PROJECT_DIR$/FinalProject/FinalProject.iml" />
