@@ -298,17 +298,26 @@ int seenNode(int target, int* array, int arraySize) {
 // returns -1 if the graph is NULL 
 // You may use either BFS or DFS to complete this task.
 int graph_has_cycle(graph_t * g){
-    if (g==NULL) {return -1;}
-    
-    dll_t* allNodeList = g->nodes;
-    node_t* startNode = allNodeList->head;
-    graph_node_t* startData = startNode->data;
-    
-    dll_t* my_queue = create_dll();
-    dll_push_back(my_queue, startData);
-    
-    
-
+    int returnVal = 0;
+    //其实是使用两个for-loop，大loop检查每一个node，小loop检查node的outNeighbor，是否存在path回来
+    node_t* bigLoopIterator = g->nodes->head;
+    node_t* smallLoopIterator;
+    int source, dest;
+    graph_node_t* bigLoopGraphNode,smallLoopGraphNode;
+    while (bigLoopIterator!=NULL) {
+        dest = bigLoopIterator->data->data;
+        bigLoopGraphNode = (graph_node_t*)bigLoopIterator->data;
+        smallLoopIterator = bigLoopGraphNode->outNeighbors->head; //这里就是它的out邻居
+        while(smallLoopIterator!=NULL) {
+            //如果存在path回来，则说明存在cycle
+            smallLoopGraphNode = (graph_node_t*)smallLoopIterator->data;
+            source = smallLoopGraphNode->data;
+            if (graph_is_reachable(g, source, dest)) {returnVal=1;}
+            smallLoopIterator = smallLoopIterator->next;
+        }
+        bigLoopIterator = bigLoopIterator->next;
+    }
+    return returnVal;
 }
 
 
