@@ -38,14 +38,15 @@ public abstract class Pet implements PetInterface {
 
   /**
    * 默认构造器，不命名，之后用setter直接命名
+   * 用来构造新实例，是一个新生的pet
    */
   public Pet() {
     // ... other field initializations
     this.toyBox = new ToyBox();
     this.toyFreshness = new HashMap<>();
+    this.birthDay = LocalDate.now();
     this.birthDayReal = LocalDate.now();
-    this.birthDayReal = LocalDate.now();
-    timer = new Timer();
+    timer = new Timer(); //这里是做什么用的
 
     timerManager = new PetTimerManager(this);
     timerManager.startHungerTimer();
@@ -64,7 +65,6 @@ public abstract class Pet implements PetInterface {
   }
   public void setName(String name) {
     this.name = name;
-    return;
   }
 
   public int getAge() { //用天来计算
@@ -76,16 +76,12 @@ public abstract class Pet implements PetInterface {
     this.age = age;
     LocalDate currentDate = LocalDate.now();
     this.birthDay = currentDate.minusDays(this.age);
-    return;
   }
 
   public int getHunger() {
     return this.hunger;
   }
-  public void setHunger(int hunger) {
-    this.hunger = hunger;
-    return;
-  }
+  public void setHunger(int hunger) {this.hunger = hunger;}
 
   public void eat(FoodInterface food) {
     this.hunger += food.getFullness();
@@ -94,7 +90,6 @@ public abstract class Pet implements PetInterface {
       return;
     }
     speakRandomly();
-    return;
   }
 
   public void play(ToyInterface toy){

@@ -9,7 +9,7 @@ class SnakeGrid extends JPanel {
     super.paintComponent(g);
 
     g.setColor(Color.GRAY);
-    g.fillRect(0, 0, 600, 600);
+    g.fillRect(0, 0, 30, 600);
     g.setColor(Color.BLACK);
     for (int i = 1; i <= 30; i++) {
       g.drawLine(0, 20 * i, 600, 20 * i);

@@ -9,10 +9,10 @@ public class GameWin extends JFrame {
   public void launch() {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("贪吃蛇");
-    this.setSize(620, 640);
+    this.setSize(60, 640);
 
     SnakeGrid snakeGrid = new SnakeGrid();
-    snakeGrid.setPreferredSize(new Dimension(600, 600));
+    snakeGrid.setPreferredSize(new Dimension(60, 600));
     this.add(snakeGrid);
 
     this.pack();
