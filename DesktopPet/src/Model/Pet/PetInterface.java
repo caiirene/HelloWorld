@@ -82,7 +82,7 @@ public interface PetInterface {
   /**
    * 这个方法直接接收一个字符串，然后添加到dreamList中
    */
-  void askUserDream(String dream);
+  void addDream(String dream);
 
   /**
    * 返还一个布尔值，表示宠物死亡与否
@@ -94,7 +94,7 @@ public interface PetInterface {
    * get health number
    * @return int health
    */
-  boolean getHealth();
+  int getHealth();
 
   /**
    * return a toy box that the pet have

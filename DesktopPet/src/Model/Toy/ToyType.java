@@ -2,12 +2,11 @@ package Model.Toy;
 
 public enum ToyType {
 
-  PS5,
-  SWITCH,
-  XBOX,
-  WOOD_CURVING_SUIT,
-  WOOD_BLOCK,
-  VR2
+  DIGITAL,
+  ADULT_CRAFT,
+  CHILD_CRAFT,
+  MATERIAL,
+  INSTRUMENT
 
 
 }

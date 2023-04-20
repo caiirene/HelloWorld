@@ -30,22 +30,23 @@ public interface FoodInterface {
 
   /**
    * food will lose freshness while time pass
+   * 虽然这里管这个方法叫作随时间流逝而腐烂，但实际上只是腐烂，这里不涉及timer
    * witch depends on food's rotRate
    */
-  void lossFreshnessWhileTimePass();
+  void lossFoodValueWhileTimePass();
 
   /**
    * return the rot rate,
    * rot rate means a food will lose this amount of freshness every 60 seconds
    * @return int
    */
-  int getRotRate();
+  int getSpoilRate();
 
   /**
    * although a food object will have an 初始 rot rate,
    * but you can set them if you want to 开挂
    */
-  void setRotRate();
+  void setSpoilRate(int rate);
 
   /**
    * 返还计算过的food value
@@ -54,14 +55,14 @@ public interface FoodInterface {
   int getRealFoodValue();
 
   /**
-   * return the current freshness of food, which is 0~100
-   * @return double
-   */
-  int getFreshness();
-
-  /**
    * reset the freshness of food to 1.00
    */
-  void resetFreshness();
+  void resetToFresh();
+
+  /**
+   * return the food name such as apple, banana......
+   * @return
+   */
+  String getFoodName();
 
 }
