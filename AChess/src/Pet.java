@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Pet {
   private String name;
@@ -95,6 +96,29 @@ public class Pet {
       }
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+
+  public String speakRandomly() {
+    Random random = new Random();
+    // 生成一个 int 类型的随机数
+    int randomNumber = random.nextInt(4);
+    String birth = "I have came to this world for %d days. Every day of getting here is so happy for me.";
+    String miss = "I miss you so much, are you missing me?";
+    String love = "I think you are the one I will love forever in this world, don't you think so?";
+    String care = "Are you taking good care of yourself? If not, I will worry about you so much.";
+    switch (randomNumber) {
+      case 0:
+        return String.format(birth, 9);
+      case 1:
+        return miss;
+      case 2:
+        return love;
+      case 3:
+        return care;
+      default:
+        return "I love you.";
     }
   }
 }

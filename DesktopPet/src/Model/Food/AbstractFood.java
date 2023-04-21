@@ -90,4 +90,14 @@ public  class AbstractFood implements FoodInterface{
   public void resetToFresh() {
     this.realFoodValue = this.foodValue;
   }
+
+  /**
+   * return the food name such as apple, banana......
+   *
+   * @return
+   */
+  @Override
+  public String getFoodName() {
+    return null;
+  }
 }

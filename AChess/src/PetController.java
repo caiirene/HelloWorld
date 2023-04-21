@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -12,6 +13,7 @@ public class PetController implements ActionListener,PropertyChangeListener{
   private PetView petView;
   private Timer hungerTimer;
   private Timer checkDeathTimer;
+  private Timer speakRandomlyTimer;
 
 
   public PetController(Pet pet, PetView petView) {
@@ -27,12 +29,13 @@ public class PetController implements ActionListener,PropertyChangeListener{
     // 创建一个定时器，每隔一段时间（例如10秒）调用一次 getHungryWhileTimePass()
     createHungerTimer();
     createCheckDeathTimer();
+    createSpeakRandomlyTimer();
 
   }
 
 
   private void createHungerTimer() {
-    int hungerInterval = 1000; // 10 seconds in milliseconds
+    int hungerInterval = 15000; // 10 seconds in milliseconds
     hungerTimer = new Timer(hungerInterval, new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -68,11 +71,8 @@ public class PetController implements ActionListener,PropertyChangeListener{
 
   @Override
   public void actionPerformed(ActionEvent e) {
+
     if (e.getSource() == petView.getEatButton()) {
-
-
-
-
 
       pet.eat();
       petView.setPetGif(petView.eatingGifPath);
@@ -133,5 +133,26 @@ public class PetController implements ActionListener,PropertyChangeListener{
 
   public void updateViewGifBasedOnDeath() {
     petView.updateGifBasedOnDeath(pet.isDead());
+  }
+
+
+  private void createSpeakRandomlyTimer() {
+    int initialDelay = generateRandomInterval(5, 15);
+    speakRandomlyTimer = new Timer(initialDelay * 1000, e -> {
+      String message = pet.speakRandomly();
+      petView.showMessage(message);
+
+      // 设置下一次说话的时间间隔
+      int nextInterval = generateRandomInterval(5, 15);
+      speakRandomlyTimer.setInitialDelay(nextInterval * 1000);
+      speakRandomlyTimer.restart();
+    });
+    speakRandomlyTimer.setRepeats(false);
+    speakRandomlyTimer.start();
+  }
+
+  private int generateRandomInterval(int minSeconds, int maxSeconds) {
+    Random random = new Random();
+    return random.nextInt(maxSeconds - minSeconds + 1) + minSeconds;
   }
 }
