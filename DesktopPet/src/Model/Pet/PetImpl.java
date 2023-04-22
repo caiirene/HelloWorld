@@ -14,6 +14,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -141,7 +143,8 @@ public class PetImpl implements PetInterface {
     switch (food.getFoodType()) {
       case POISON:
         int oldHealth = health;
-        this.health = Math.min(health - 5, 0);
+        this.health = Math.max(health - 50, 0);
+        System.out.println("吃到毒药，health："+health);
         support.firePropertyChange("healthChange",oldHealth,this.health);
         //这里需要直接通知内部监听器？还是通知controller监听器，然后再让控制器调佣pet的checkDeath？
         break;
@@ -210,13 +213,21 @@ public class PetImpl implements PetInterface {
   }
 
   /**
-   * 这个方法直接接收一个字符串，然后添加到dreamList中
+   * 这个方法直接接收一个字符串，然后使用格式，添加到dreamList中
    *
    * @param dream
    */
   @Override
   public void addDream(String dream) {
-    dreams.add(dream);
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy年M月d日");
+    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+    LocalDateTime now = LocalDateTime.now();
+
+    String formattedDate = now.format(dateFormatter);
+    String formattedTime = now.format(timeFormatter);
+
+    String formattedDream = formattedDate + " " + formattedTime + "，你曾对我说：\n" + dream + "\n\n";
+    dreams.add(formattedDream);
   }
 
   /**
@@ -344,14 +355,18 @@ public class PetImpl implements PetInterface {
    */
   @Override
   public String sayTheLastWord() {
-    String lastWord = "I am "+getAge()+" days old now. It was a great\n time to meet you in this world.\n"
-        + " During these "+getAge()+" days,\n you told me "+dreams.size()+" dreams. \n"
-        + "And those dream accompanied me over these "+getAge()+" nights.\n"
-        + "They are the most precious treasures of mine.\n I have kept all of them for you.\n"
-        + "I love you. Goodbye.";
+    String lastWord = "<html>I am " + getAge() + " days old now. It was a great<br>"
+        + "time to meet you in this world.<br>"
+        + "During these " + getAge() + " days,<br>"
+        + "you told me " + dreams.size() + " dreams. <br>"
+        + "And those dream accompanied me over these " + getAge() + " nights.<br>"
+        + "They are the most precious treasures of mine.<br>"
+        + "I have kept all of them for you.<br>"
+        + "I love you. Goodbye.</html>";
 
     return lastWord;
   }
+
 
 
   /**
@@ -402,10 +417,10 @@ public class PetImpl implements PetInterface {
     boolean oldDead = this.liveOrDead;
     if (health <= 0) {
       this.liveOrDead = true;
-      System.out.println("dead = true");
+      //System.out.println("dead = true");
     }
     //support.firePropertyChange("dead", oldDead, liveOrDead);
-    System.out.println("check death监听器已通知");
+    //System.out.println("check death监听器已通知");
 
     // 手动触发事件
     for (PropertyChangeListener listener : support.getPropertyChangeListeners()) {
@@ -422,9 +437,6 @@ public class PetImpl implements PetInterface {
     checkDeath();
   }
 
-  public void addPropertyChangeListener(PropertyChangeListener listener) {
-    support.addPropertyChangeListener(listener);
-  }
 
   public void increaseHappiness() {
     int oldHappiness = this.happiness;
@@ -437,8 +449,11 @@ public class PetImpl implements PetInterface {
   }
 
   public void generateTxtFileFromDreams() {
-    File outputFile = new File("dreams.txt");
+    System.out.println("生成txt");
+    File outputFile = new File("C:\\Users\\asus\\Desktop\\dreams.txt");
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+      writer.write(lastWordNoHTML());
+      writer.newLine();
       for (String dream : dreams) {
         writer.write(dream);
         writer.newLine();
@@ -446,5 +461,14 @@ public class PetImpl implements PetInterface {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private String lastWordNoHTML() {
+    String lastWord = "I am "+getAge()+" days old now. It was a great\ntime to meet you in this world.\n"
+        + "During these "+getAge()+" days,\nyou told me "+dreams.size()+" dreams. \n"
+        + "And those dream accompanied me over these "+getAge()+" nights.\n"
+        + "They are the most precious treasures of mine.\nI have kept all of them for you.\n"
+        + "I love you. Goodbye.";
+    return lastWord;
   }
 }

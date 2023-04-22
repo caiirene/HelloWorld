@@ -16,6 +16,7 @@ public class HungerTimer extends Timer {
       @Override
       public void actionPerformed(ActionEvent e) {
         pet.loseHungerWhileTimePass();
+        System.out.println("hunger timer");
       }
     });
     //start();

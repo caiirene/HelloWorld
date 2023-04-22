@@ -48,6 +48,7 @@ public class FoodGeneratorTimer extends Timer{
         }
         FoodDecayTimer newTimer = new FoodDecayTimer(60000, newFood);
         foodBox.addFood(newFood);
+        System.out.println("food timer");
       }
     });
   }

@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 
 public class BasicPenal extends JPanel {
 
-  public JButton eatButton;
-  public JButton playButton;
-  public JButton dreamButton;
+  private JButton eatButton;
+  private JButton playButton;
+  private JButton dreamButton;
 
   public BasicPenal() {
     // 设定布局

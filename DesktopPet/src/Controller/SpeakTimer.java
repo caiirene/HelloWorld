@@ -30,6 +30,7 @@ public class SpeakTimer extends Timer {
         int nextInterval = generateRandomInterval(5, 15) * 1000; // convert seconds to milliseconds
         setInitialDelay(nextInterval);
         restart();
+        System.out.println("speak randomly timer");
       }
     });
     setRepeats(false);

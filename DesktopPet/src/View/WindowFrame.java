@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 
 public class WindowFrame extends JFrame {
 
-  public JButton closeButton;
-  public JLabel petLabel;
+  private JButton closeButton;
+  private JLabel petLabel;
   private Point mouseClickPoint;
   public String normalGifPath = "C:\\Users\\asus\\Documents\\GitHub\\cs5004-irene-new\\DesktopPet\\src\\View\\t天使.gif";
   public String lowHungerGifPath = "C:\\Users\\asus\\Documents\\GitHub\\cs5004-irene-new\\DesktopPet\\src\\View\\t天使1.gif";
@@ -78,8 +78,8 @@ public class WindowFrame extends JFrame {
   public void setPetGif(String gifPath) {
     petLabel.setIcon(new ImageIcon(gifPath));
   }
-  public void updateGifBasedOnHunger(int hunger) {
-    if (hunger <= 60) {
+  public void updateGifBasedOnHunger(int hunger, int happiness) {
+    if (hunger <= 60 || happiness<=40) {
       setPetGif(lowHungerGifPath);
     } else {
       setPetGif(normalGifPath);
@@ -98,11 +98,4 @@ public class WindowFrame extends JFrame {
     }
   }
 
-  public void updateGifBasedOnHappiness(int happiness) {
-    if (happiness <= 60) {
-      setPetGif(lowHungerGifPath);
-    } else {
-      setPetGif(normalGifPath);
-    }
-  }
 }

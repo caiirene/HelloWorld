@@ -17,6 +17,7 @@ public class HealthTimer extends Timer {
       @Override
       public void actionPerformed(ActionEvent e) {
         pet.loseHealth_GetTiredWhileTimePass();
+        System.out.println("health timer");
       }
     });
     //start();

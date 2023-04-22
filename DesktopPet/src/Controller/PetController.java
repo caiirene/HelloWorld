@@ -37,6 +37,7 @@ public class PetController implements ActionListener, PropertyChangeListener {
   private Timer tiredTimer;
   private Timer emergencyLoseHealthTimer;
   private Timer foodGeneratorTimer;
+  private Timer happinessTimer;
 
   /**
    * new game constructor
@@ -61,14 +62,29 @@ public class PetController implements ActionListener, PropertyChangeListener {
     foodBox.addFood(new Diesel());
     if (foodBox==null) {System.out.println("null food box");}
 
-    //
-    foodGeneratorTimer = new FoodGeneratorTimer(30000,foodBox);
+    //////////////////创建timer//////////////////////////////////
 
-    //创建timer
-    createHungerTimer();
+    //食品生产开始 generate food
+    foodGeneratorTimer = new FoodGeneratorTimer(30000,foodBox);
+    foodGeneratorTimer.start();
+
+    //normal hunger time 普通饥饿时间
+    hungerTimer = new HungerTimer(30000,pet);
+    hungerTimer.start();
+    //normal speak time
+    speakRandomlyTimer = new SpeakTimer(5000,pet,view);
+    speakRandomlyTimer.start();
+    //normal health time
+    tiredTimer = new HealthTimer(60000,pet);
+    tiredTimer.start();
+    //normal happiness time
+    happinessTimer = new HappinessTimer(60000,pet);
+    happinessTimer.start();
+    //create a emergency timer, but not start yet
+    emergencyLoseHealthTimer = new HealthTimer(5000, pet);
+
+    //这个监测死亡的timer比较特殊，直接放在controller中进行定义
     createCheckDeathTimer();
-    createSpeakRandomlyTimer();
-    createTiredTimer();
 
   }
   /**
@@ -84,8 +100,8 @@ public class PetController implements ActionListener, PropertyChangeListener {
   @Override
   public void actionPerformed(ActionEvent e) {
 
-    //feed按键
-    if (e.getSource() == view.basicPenal.getEatButton()) {
+    //FEED按键
+    if (e.getSource() == view.basicPenal.getEatButton() && pet.getDeathStatus()!=true) {
       //先从foodBox中获取一串不重复的String名单
       List<String> foodList = foodBox.getDistinctListOfFoodName();
 
@@ -100,19 +116,23 @@ public class PetController implements ActionListener, PropertyChangeListener {
             FoodInterface providedFood = foodBox.provideFood(button.getText());
             if(providedFood!=null) {
               pet.eat(providedFood);
+
               //显示3秒的吃饭动画
               view.frame.setPetGif(view.frame.eatingGifPath);
               int delay = 3000; // 3 seconds in milliseconds
               Timer timer = new Timer(delay, event -> {
-                view.frame.updateGifBasedOnHunger(pet.getHunger());
+                view.frame.updateGifBasedOnHunger(pet.getHunger(),pet.getHappiness());
               });
               timer.setRepeats(false);
               timer.start();
             }
             else {pet.eatApple();} //如果暂时还没有食物就吃过苹果吧
+
             view.frame.getContentPane().remove(foodPenal); // 删除 temFoodPanel
             view.frame.revalidate(); // 触发界面重新布局
             view.frame.repaint(); // 重绘界面
+            String thanks = pet.sayThankYou();
+            view.showSpeach(thanks);
           }
         });
       }
@@ -123,18 +143,22 @@ public class PetController implements ActionListener, PropertyChangeListener {
       view.basicPenal.repaint(); // 重绘界面
     }
 
-    if (e.getSource() == view.basicPenal.getPlayButton()) {
+    //PLAY
+    if (e.getSource() == view.basicPenal.getPlayButton() && pet.getDeathStatus()!=true) {
       pet.increaseHappiness();
       //显示3秒的玩耍动画
       view.frame.setPetGif(view.frame.eatingGifPath);
       int delay = 3000; // 3 seconds in milliseconds
       Timer timer = new Timer(delay, event -> {
-        view.frame.updateGifBasedOnHunger(pet.getHunger());
+        view.frame.updateGifBasedOnHunger(pet.getHunger(),pet.getHappiness());
       });
       timer.setRepeats(false);
       timer.start();
+      String thanks = pet.sayThankYou();
+      view.showSpeach(thanks);
 
-    } else if (e.getSource() == view.basicPenal.getDreamButton()) {
+      //做梦按键 DREAM
+    } else if (e.getSource() == view.basicPenal.getDreamButton() && pet.getDeathStatus()!=true) {
       JTextArea dreamTextArea = new JTextArea(10, 30); // 设置行数和列数
       dreamTextArea.setLineWrap(true);
       dreamTextArea.setWrapStyleWord(true);
@@ -152,7 +176,9 @@ public class PetController implements ActionListener, PropertyChangeListener {
   }
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
-    System.out.println("监听器收到");
+
+    //死了
+    //if any chance pet dead, all timer stop, and generate txt file
     if ("dead".equals(evt.getPropertyName())) {
       //System.out.println("监听器收到");
       boolean isDead = (boolean) evt.getNewValue();
@@ -169,17 +195,26 @@ public class PetController implements ActionListener, PropertyChangeListener {
         checkDeathTimer.stop();
         speakRandomlyTimer.stop();
         tiredTimer.stop();
-        if (emergencyLoseHealthTimer!=null) {
-          emergencyLoseHealthTimer.stop();
-        }
+        emergencyLoseHealthTimer.stop();
+        happinessTimer.stop();
+        foodGeneratorTimer.stop();
+
+        //last word
+        String lastWord = pet.sayTheLastWord();
+        view.showSpeach(lastWord);
+
         // 调用生成 txt 文件的方法，例如：
         pet.generateTxtFileFromDreams();
       }
+
+      //饿了，分两种情况，一个是饿急了，另一个就是正常饿了。但无论哪一种，gif都要据情况更新
+      //get hungry: emergency {start+end} || normal hungry
     } else if ("hungerChange".equals(evt.getPropertyName())) {
       //System.out.println("hunger监听器已收到");
       int newHunger = (int)evt.getNewValue();
+
       if (newHunger<=0) {
-        createEmergencyLoseHealth();
+        emergencyLoseHealthTimer.start();
         String reallyHungry = pet.sayHungry();
         view.showSpeach(reallyHungry);
         speakRandomlyTimer.stop();
@@ -189,70 +224,25 @@ public class PetController implements ActionListener, PropertyChangeListener {
         speakRandomlyTimer.start();
         hungerTimer.start();
       }
-      view.frame.updateGifBasedOnHunger(newHunger);
+      view.frame.updateGifBasedOnHunger(newHunger, pet.getHappiness());
+
+      //HEALTH CHANGE
+      //更新gif的同时调用checkDeath。任何对health的改变都会在此触发death check，所以确保任何死亡都将被监测到
     } else if ("healthChange".equals(evt.getPropertyName())) {
       view.frame.updateGifBasedOnHealth(pet.getHealth());
       pet.checkDeath();
+
+      //HAPPY CHECK
     } else if ("happinessChange".equals(evt.getPropertyName())) {
-      view.frame.updateGifBasedOnHappiness(pet.getHappiness());
+      if (pet.getHappiness()<=20) {
+        String reallyLonely = pet.sayLonely();
+        view.showSpeach(reallyLonely);
+      }
+      view.frame.updateGifBasedOnHunger(pet.getHunger(),pet.getHappiness());
     }
   }
 
-  private void createEmergencyLoseHealth() {
-    int emergencyInterval = 5000; // 10 seconds in milliseconds
-    emergencyLoseHealthTimer = new Timer(emergencyInterval, new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        System.out.println("controller 中触发紧急掉血");
-        pet.loseHealthEmergency();
-      }
-    });
-    emergencyLoseHealthTimer.start();
-  }
 
-
-
-  private void createHungerTimer() {
-    int hungerInterval = 15000; // 10 seconds in milliseconds
-    hungerTimer = new Timer(hungerInterval, new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        pet.loseHungerWhileTimePass();
-      }
-    });
-    hungerTimer.start();
-    view.frame.updateGifBasedOnHunger(pet.getHunger());
-  }
-  private void createTiredTimer() {
-    int hungerInterval = 50000; // 10 seconds in milliseconds
-    tiredTimer = new Timer(hungerInterval, new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        pet.loseHealth_GetTiredWhileTimePass();
-      }
-    });
-    tiredTimer.start();
-    view.frame.updateGifBasedOnHealth(pet.getHealth());
-  }
-  private void createSpeakRandomlyTimer() {
-    int initialDelay = generateRandomInterval(5, 15);
-    speakRandomlyTimer = new Timer(initialDelay * 1000, e -> {
-      String message = pet.speakRandomly();
-      view.showSpeach(message);
-
-      // 设置下一次说话的时间间隔
-      int nextInterval = generateRandomInterval(5, 15);
-      speakRandomlyTimer.setInitialDelay(nextInterval * 1000);
-      speakRandomlyTimer.restart();
-    });
-    speakRandomlyTimer.setRepeats(false);
-    speakRandomlyTimer.start();
-  }
-
-  private int generateRandomInterval(int minSeconds, int maxSeconds) {
-    Random random = new Random();
-    return random.nextInt(maxSeconds - minSeconds + 1) + minSeconds;
-  }
   private void createCheckDeathTimer() {
     int checkInterval = 100; // Check every 0.1 seconds (100 milliseconds)
     checkDeathTimer = new Timer(checkInterval, new ActionListener() {
