@@ -1,5 +1,11 @@
 package Model.Food;
 
+/**
+ * abstract food include nearly all methods needed
+ * the most important is get real value method
+ * with a constructor, but must be constructed in concrete class.
+ * concrete class has all the default parameters
+ */
 public abstract class AbstractFood implements FoodInterface{
 
   protected int foodValue;
@@ -54,7 +60,8 @@ public abstract class AbstractFood implements FoodInterface{
    */
   @Override
   public void lossFoodValueWhileTimePass() {
-    this.realFoodValue -= this.spoilRate;
+    realFoodValue = Math.max(realFoodValue - spoilRate, 0);
+    if (realFoodValue<=0) {notRotten=false;}
   }
 
   /**

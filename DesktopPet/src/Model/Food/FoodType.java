@@ -1,14 +1,14 @@
 package Model.Food;
 
+/**
+ * TYPE OF FOOD
+ * pet eat them will have different reactions
+ */
 public enum FoodType {
 
-  DIESEL,
-  APPLE,
-  SCREWWORM,//蛆
-  STRAWBERRY,
-  GOOD,
-  BAD,
-  POISON
+  GOOD, //good food will just provide hunger
+  BAD, //bad food reduce happiness
+  POISON //poison reduce health
 
 
 }

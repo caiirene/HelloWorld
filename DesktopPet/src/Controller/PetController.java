@@ -36,6 +36,7 @@ public class PetController implements ActionListener, PropertyChangeListener {
   private Timer speakRandomlyTimer;
   private Timer tiredTimer;
   private Timer emergencyLoseHealthTimer;
+  private Timer foodGeneratorTimer;
 
   /**
    * new game constructor
@@ -59,6 +60,9 @@ public class PetController implements ActionListener, PropertyChangeListener {
     foodBox.addFood(new Screwworm());
     foodBox.addFood(new Diesel());
     if (foodBox==null) {System.out.println("null food box");}
+
+    //
+    foodGeneratorTimer = new FoodGeneratorTimer(30000,foodBox);
 
     //创建timer
     createHungerTimer();
