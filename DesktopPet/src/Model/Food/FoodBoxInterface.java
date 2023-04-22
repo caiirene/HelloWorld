@@ -42,9 +42,21 @@ public interface FoodBoxInterface {
   void removeBadFood();
 
   /**
-   * return the entire list
+   * return the entire list of Food object
    * @return
    */
   List<FoodInterface> getFoodBox();
+
+  /**
+   * map all food to long list of String
+   */
+  List<String> getAllListOfFoodName();
+
+  /**
+   * make the string list a set
+   * 只有不重复部分，为了方便生成JButton
+   * @return
+   */
+  List<String> getDistinctListOfFoodName();
 
 }

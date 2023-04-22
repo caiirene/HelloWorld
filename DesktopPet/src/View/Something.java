@@ -1,15 +1,12 @@
 package View;
+import Controller.PetController;
 import javax.swing.*;
 
 public class Something {
   public static void main(String[] args) {
-    JFrame frame = new JFrame("BasicPenal Example");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(300, 200);
 
-    BasicPenal basicPenal = new BasicPenal();
-    frame.add(basicPenal);
+    new PetController();
 
-    frame.setVisible(true);
+
   }
 }

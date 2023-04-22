@@ -18,6 +18,11 @@ public class Pet {
 
   private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
+  public Pet(String name) {
+
+    this.name = name;
+  }
+
   public int getHunger(){
     return hunger;
   }
@@ -56,10 +61,6 @@ public class Pet {
       setDead(true);
     }
     support.firePropertyChange("hunger", oldHunger, this.hunger);
-  }
-
-  public Pet(String name) {
-    this.name = name;
   }
 
 

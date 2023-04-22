@@ -5,7 +5,7 @@ public class PetApp {
     SwingUtilities.invokeLater(() -> {
       Pet pet = new Pet("Fluffy");
       PetView petView = new PetView(pet);
-      PetController petController = new PetController(pet, petView);
+      OldController petController = new OldController(pet, petView);
     });
   }
 }

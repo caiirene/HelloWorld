@@ -44,7 +44,7 @@ public class PetView implements PropertyChangeListener {
     this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     // 设置窗口在屏幕右下角
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    frame.setLocation(screenSize.width - frame.getWidth(), screenSize.height - frame.getHeight());
+    frame.setLocation(screenSize.width - frame.getWidth()-200, screenSize.height - frame.getHeight()+100);
 
 
     // 创建关闭按钮

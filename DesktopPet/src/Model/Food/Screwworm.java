@@ -4,6 +4,6 @@ public class Screwworm extends AbstractFood {
 
 
   public Screwworm() {
-    super(10,5,FoodType.BAD);
+    super(10,5,"screwworm", FoodType.BAD);
   }
 }

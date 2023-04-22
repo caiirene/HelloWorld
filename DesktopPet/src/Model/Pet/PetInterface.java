@@ -2,6 +2,7 @@ package Model.Pet;
 
 import Model.Food.*;
 import Model.Toy.*;
+import java.beans.PropertyChangeSupport;
 
 
 /**
@@ -59,6 +60,7 @@ public interface PetInterface {
    * @param food
    */
   void eat(FoodInterface food);
+
 
   /**
    * play with a toy object from toy box or whatever you have
@@ -168,4 +170,15 @@ public interface PetInterface {
    */
   void checkDeath();
 
+  void increaseHappiness();
+
+  void eatApple();
+
+  void generateTxtFileFromDreams();
+
+  PropertyChangeSupport getSupport();
+
+  void loseHealthEmergency();
+
+  int getHappiness();
 }

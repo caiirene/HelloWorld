@@ -14,7 +14,7 @@ public class BasicPenal extends JPanel {
 
   public BasicPenal() {
     // 设定布局
-    setLayout(new FlowLayout());
+    setLayout(new GridLayout(1, 3));
 
     // 初始化按钮
     eatButton = new JButton("Feed");
@@ -27,14 +27,14 @@ public class BasicPenal extends JPanel {
     add(dreamButton);
   }
 
-  // 重写 paintComponent 方法
-  @Override
-  protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    // 在面板上绘制字符串
-    //g.drawString("Hello, World!", 50, 50);
+  public JButton getEatButton() {
+    return eatButton;
   }
-
-
+  public JButton getPlayButton() {
+    return playButton;
+  }
+  public JButton getDreamButton() {
+    return dreamButton;
+  }
 
 }

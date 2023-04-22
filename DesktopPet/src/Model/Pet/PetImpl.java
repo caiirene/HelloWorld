@@ -6,9 +6,13 @@ import Model.Toy.ToyBox;
 import Model.Toy.ToyBoxInterface;
 import Model.Toy.ToyInterface;
 import java.awt.Component;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -37,7 +41,7 @@ public class PetImpl implements PetInterface {
   protected boolean isSleeping = false;
 
   //protected int activationRate;
-  protected boolean liveOrDead = true;
+  protected boolean liveOrDead = false;
   protected Map<String, Integer> toyFreshness;
   protected ToyBoxInterface toyBox;
 
@@ -124,6 +128,8 @@ public class PetImpl implements PetInterface {
    */
   @Override
   public void setHunger(int hunger) { this.hunger = hunger; }
+  @Override
+  public int getHappiness() {return happiness;}
 
   /**
    * eat a food object from food box or whatever you have, and bring up the hunger number
@@ -263,10 +269,11 @@ public class PetImpl implements PetInterface {
     Random random = new Random();
     // 生成一个 int 类型的随机数
     int randomNumber = random.nextInt(4);
-    String birth = "I have came to this world for %d days. Every day of getting here is so happy for me.";
+    String birth = "<html>I have came to this world for %d days.<br>Every day of being here is so happy for me.</html>";
     String miss = "I miss you so much, are you missing me?";
-    String love = "I think you are the one I will love forever in this world, don't you think so?";
-    String care = "Are you taking good care of yourself? If not, I will worry about you so much.";
+    String love = "<html>I think you are the one<br>I will love forever in this world,<br>don't you think so?</html>";
+    String care = "<html>Are you taking good care of yourself?<br>If not, I will worry about you so much.</html>";
+
     switch (randomNumber) {
       case 0:
         return String.format(birth, this.age);
@@ -295,7 +302,7 @@ public class PetImpl implements PetInterface {
     String one = "Thank you~";
     String two = "(#^.^#)~Thanks";
     String three = "I am so happy~";
-    String four = "I think I am the luckiest little pet in the world.";
+    String four = "I think I am the luckiest little \npet in the world.";
     switch (randomNumber) {
       case 0:
         return one;
@@ -327,7 +334,7 @@ public class PetImpl implements PetInterface {
    */
   @Override
   public String sayLonely() {
-    return "Would you mind... play with me for a while, just a little while?";
+    return "Would you mind... play with me\n for a while, just a little while?";
   }
 
   /**
@@ -337,10 +344,10 @@ public class PetImpl implements PetInterface {
    */
   @Override
   public String sayTheLastWord() {
-    String lastWord = "I am "+getAge()+" days old now. It was a great time to meet you in this world."
-        + " During these "+getAge()+" days, you told me "+dreams.size()+" dreams. "
-        + "And those dream accompanied me over these "+getAge()+" nights."
-        + "They are the most precious treasures of mine. I have kept all of them for you."
+    String lastWord = "I am "+getAge()+" days old now. It was a great\n time to meet you in this world.\n"
+        + " During these "+getAge()+" days,\n you told me "+dreams.size()+" dreams. \n"
+        + "And those dream accompanied me over these "+getAge()+" nights.\n"
+        + "They are the most precious treasures of mine.\n I have kept all of them for you.\n"
         + "I love you. Goodbye.";
 
     return lastWord;
@@ -353,8 +360,9 @@ public class PetImpl implements PetInterface {
   @Override
   public void loseHealth_GetTiredWhileTimePass() {
     int oldHealth = this.health;
-    health = Math.max(health - 1, 0);
-    checkDeath();
+    health = Math.max(health - 15, 0);
+    System.out.println("health -15, now health = "+ this.getHealth());
+    this.checkDeath();
     //support.firePropertyChange("healthChange", oldHealth, this.health);
   }
 
@@ -368,9 +376,10 @@ public class PetImpl implements PetInterface {
     // 例如：hunger = Math.max(hunger - 1, 0);
     //System.out.println("hunger-25 in pet");
     hunger = Math.max(hunger - 25, 0);
-    //System.out.println("hunger, " + this.hunger);
+    System.out.println("loss hunger normally, " + this.hunger);
 
     support.firePropertyChange("hungerChange", oldHunger, this.hunger);
+
   }
 
   /**
@@ -379,7 +388,7 @@ public class PetImpl implements PetInterface {
   @Override
   public void loseHappinessWhileTimePass() {
     int oldHappiness = this.happiness;
-    happiness = Math.max(happiness - 10, 0);
+    happiness = Math.max(happiness - lonelyRate, 0);
 
     support.firePropertyChange("happinessChange", oldHappiness, this.happiness);
   }
@@ -391,26 +400,51 @@ public class PetImpl implements PetInterface {
   @Override
   public void checkDeath() {
     boolean oldDead = this.liveOrDead;
-    if (health == 0) {
+    if (health <= 0) {
       this.liveOrDead = true;
+      System.out.println("dead = true");
     }
-    support.firePropertyChange("dead", oldDead, liveOrDead);
+    //support.firePropertyChange("dead", oldDead, liveOrDead);
+    System.out.println("check death监听器已通知");
+
+    // 手动触发事件
+    for (PropertyChangeListener listener : support.getPropertyChangeListeners()) {
+      listener.propertyChange(new PropertyChangeEvent(this, "dead", oldDead, liveOrDead));
+    }
   }
+  public PropertyChangeSupport getSupport(){return support;}
+
 
   public void loseHealthEmergency() {
     int oldHealth = this.health;
     health = Math.max(health - 10, 0);
-    checkDeath();
-  }
-
-  public void checkStatusEverySecond() {
-    if (happiness<=0 || hunger<=0) {
-      loseHealthEmergency();
-    }
+    System.out.println("lose health emergency, now health = " + health);
     checkDeath();
   }
 
   public void addPropertyChangeListener(PropertyChangeListener listener) {
     support.addPropertyChangeListener(listener);
+  }
+
+  public void increaseHappiness() {
+    int oldHappiness = this.happiness;
+    happiness = Math.min(happiness + 10, 100);
+    support.firePropertyChange("happiness", oldHappiness, this.happiness);
+  }
+
+  public void eatApple() {
+    System.out.println("eat apple!!!!!!!!!!!!");
+  }
+
+  public void generateTxtFileFromDreams() {
+    File outputFile = new File("dreams.txt");
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+      for (String dream : dreams) {
+        writer.write(dream);
+        writer.newLine();
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

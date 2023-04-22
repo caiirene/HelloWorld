@@ -8,7 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer; // 使用正确的 Timer 类
 
-public class PetController implements ActionListener,PropertyChangeListener{
+public class OldController implements ActionListener,PropertyChangeListener{
   private Pet pet;
   private PetView petView;
   private Timer hungerTimer;
@@ -16,7 +16,7 @@ public class PetController implements ActionListener,PropertyChangeListener{
   private Timer speakRandomlyTimer;
 
 
-  public PetController(Pet pet, PetView petView) {
+  public OldController(Pet pet, PetView petView) {
     this.pet = pet;
     this.petView = petView;
     petView.getEatButton().addActionListener(this);
@@ -24,7 +24,7 @@ public class PetController implements ActionListener,PropertyChangeListener{
     petView.getDreamButton().addActionListener(this);
 
     pet.addPropertyChangeListener(petView);
-    //pet.getSupport().addPropertyChangeListener(this);
+    pet.getSupport().addPropertyChangeListener(this);
 
     // 创建一个定时器，每隔一段时间（例如10秒）调用一次 getHungryWhileTimePass()
     createHungerTimer();

@@ -1,16 +1,24 @@
 package Model.Food;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FoodBox implements FoodBoxInterface{
 
   private List<FoodInterface> foodBox;
+
+  public FoodBox() {
+    foodBox = new ArrayList<>();
+  }
 
   /**
    * add a pointer to a food object into this box add at back of the list
    */
   @Override
   public void addFood(FoodInterface food) {
+    //System.out.println("added: " + food.getFoodName());
     this.foodBox.add(food);
   }
 
@@ -23,6 +31,10 @@ public class FoodBox implements FoodBoxInterface{
    */
   @Override
   public FoodInterface provideFood(String foodName) {
+    if (foodBox.size()==0) {
+      System.out.println("根本没有食物");
+      return null;
+    }
     for (FoodInterface food : foodBox) {
       if (food.getFoodName()==foodName && food.getFoodBoolean()) {
         FoodInterface returnFood = food;
@@ -94,4 +106,22 @@ public class FoodBox implements FoodBoxInterface{
   public List<FoodInterface> getFoodBox() {
     return foodBox;
   }
+
+  public List<String> getAllListOfFoodName() {
+    List<String> foodNames = new ArrayList<>();
+    for (FoodInterface food : foodBox) {
+      foodNames.add(food.getFoodName());
+    }
+    return foodNames;
+  }
+
+  public List<String> getDistinctListOfFoodName() {
+    Set<String> distinctFoodNames = new HashSet<>();
+    for (FoodInterface food : foodBox) {
+      distinctFoodNames.add(food.getFoodName());
+    }
+    return new ArrayList<>(distinctFoodNames);
+  }
+
+
 }

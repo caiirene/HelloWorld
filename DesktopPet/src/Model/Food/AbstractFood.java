@@ -1,18 +1,20 @@
 package Model.Food;
 
-public  class AbstractFood implements FoodInterface{
+public abstract class AbstractFood implements FoodInterface{
 
   protected int foodValue;
   protected int realFoodValue;
   protected int spoilRate;
   protected boolean notRotten;
   protected FoodType type;
+  protected String foodName;
 
-  public AbstractFood(int foodValue, int spoilRate, FoodType type) {
+  public AbstractFood(int foodValue, int spoilRate,String foodName, FoodType type) {
     this.realFoodValue = foodValue;
     this.foodValue = foodValue;
     this.spoilRate = spoilRate;
     this.type = type;
+    this.foodName = foodName;
   }
 
   /**
@@ -98,6 +100,6 @@ public  class AbstractFood implements FoodInterface{
    */
   @Override
   public String getFoodName() {
-    return null;
+    return foodName;
   }
 }
