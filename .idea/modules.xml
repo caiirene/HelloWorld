@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AChess/AChess.iml" filepath="$PROJECT_DIR$/AChess/AChess.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AFinalProject/AFinalProject.iml" filepath="$PROJECT_DIR$/AFinalProject/AFinalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" filepath="$PROJECT_DIR$/BookClassPractice/BookClassPractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/Calculator/Calculator.iml" filepath="$PROJECT_DIR$/Calculator/Calculator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ChatGPT/ChatGPT.iml" filepath="$PROJECT_DIR$/ChatGPT/ChatGPT.iml" />
       <module fileurl="file://$PROJECT_DIR$/ChatGPTTeachingPet/ChatGPTTeachingPet.iml" filepath="$PROJECT_DIR$/ChatGPTTeachingPet/ChatGPTTeachingPet.iml" />
       <module fileurl="file://$PROJECT_DIR$/DesktopPet/DesktopPet.iml" filepath="$PROJECT_DIR$/DesktopPet/DesktopPet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FinalProject/FinalProject.iml" filepath="$PROJECT_DIR$/FinalProject/FinalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/HW01_Fraction/HW01_Fraction.iml" filepath="$PROJECT_DIR$/HW01_Fraction/HW01_Fraction.iml" />
       <module fileurl="file://$PROJECT_DIR$/HW02_Chess/HW02_Chess.iml" filepath="$PROJECT_DIR$/HW02_Chess/HW02_Chess.iml" />
       <module fileurl="file://$PROJECT_DIR$/HW03_ChessWithBroad/HW03_ChessWithBoard.iml" filepath="$PROJECT_DIR$/HW03_ChessWithBroad/HW03_ChessWithBoard.iml" />
@@ -24,7 +20,6 @@
       <module fileurl="file://$PROJECT_DIR$/Lab06_Triangle/Lab06_Triangle.iml" filepath="$PROJECT_DIR$/Lab06_Triangle/Lab06_Triangle.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab10_TTT/Lab10_TTT.iml" filepath="$PROJECT_DIR$/Lab10_TTT/Lab10_TTT.iml" />
       <module fileurl="file://$PROJECT_DIR$/Quiz/Quiz.iml" filepath="$PROJECT_DIR$/Quiz/Quiz.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SnakeGame/SnakeGame.iml" filepath="$PROJECT_DIR$/SnakeGame/SnakeGame.iml" />
       <module fileurl="file://$PROJECT_DIR$/organization/organization.iml" filepath="$PROJECT_DIR$/organization/organization.iml" />
     </modules>
   </component>
