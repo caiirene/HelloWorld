@@ -8,11 +8,15 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+/**
+ * this total view include: frame/basic panel/speaking label
+ * since frame and basic panel are mostly independent, so they are public field
+ * the only method useful here is the showSpeach
+ */
 public class TotalView {
 
   public WindowFrame frame = new WindowFrame();
   public BasicPenal basicPenal = new BasicPenal();
-  public FoodPenal foodPenal;
   private JLabel petSpeechLabel;
   private JTextArea petSpeechTextArea;
 

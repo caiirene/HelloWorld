@@ -6,6 +6,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * this test might be unstable
+ * Due to the imprecision of timers, test cases may produce different results in different runs.
+ */
 public class SpeakTimerTest {
 
   @Test

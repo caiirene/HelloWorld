@@ -6,6 +6,11 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * this panel is a constance panel
+ * always shown and never change
+ * include: feed/play/dream
+ */
 public class BasicPenal extends JPanel {
 
   private JButton eatButton;
@@ -27,6 +32,10 @@ public class BasicPenal extends JPanel {
     add(dreamButton);
   }
 
+  /**
+   * three getters for controller to use
+   * @return
+   */
   public JButton getEatButton() {
     return eatButton;
   }

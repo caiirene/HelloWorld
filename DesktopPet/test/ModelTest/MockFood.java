@@ -3,6 +3,9 @@ package ModelTest;
 import Model.Food.FoodInterface;
 import Model.Food.FoodType;
 
+/**
+ * just a mock class for test only
+ */
 public class MockFood implements FoodInterface {
   private int foodValue;
   private FoodType foodType;

@@ -3,6 +3,9 @@ package ControllerTest;
 import Model.Food.FoodInterface;
 import Model.Food.FoodType;
 
+/**
+ * just a mock class of food
+ */
 public class TestFood implements FoodInterface {
   private int foodValue;
   private boolean isFood;

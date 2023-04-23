@@ -8,11 +8,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+/**
+ * A timer for the pet to speak randomly at intervals.
+ */
 public class SpeakTimer extends Timer {
 
   private PetInterface pet;
   private TotalView view;
 
+  /**
+   * Constructor for the SpeakTimer class.
+   * @param interval The delay between the pet's speeches.
+   * @param pet The pet to speak.
+   * @param view The view to display the pet's speeches.
+   */
   public SpeakTimer(int interval, PetInterface pet, TotalView view) {
     super(interval * 1000, null);
     this.pet = pet;

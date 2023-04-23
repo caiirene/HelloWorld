@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * just test on constructor of Screwworm class
+ */
 public class ScrewwormTest {
 
   @Test

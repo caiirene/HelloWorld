@@ -12,10 +12,18 @@ import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * A timer for generating new food items at random intervals and adding them to a food box.
+ */
 public class FoodGeneratorTimer extends Timer{
 
   private FoodBoxInterface foodBox;
 
+  /**
+   * Constructor for the FoodGeneratorTimer class.
+   * @param i The delay between generating new food items.
+   * @param foodBox The food box to which new food items will be added.
+   */
   public FoodGeneratorTimer(int i, FoodBoxInterface foodBox) {
     super(i,null);
 
