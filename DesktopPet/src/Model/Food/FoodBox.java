@@ -1,10 +1,15 @@
 package Model.Food;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The FoodBox class represents a collection of FoodInterface objects.
+ * It allows users to add, remove, and retrieve food items from the box.
+ */
 public class FoodBox implements FoodBoxInterface{
 
   private List<FoodInterface> foodBox;
@@ -15,10 +20,12 @@ public class FoodBox implements FoodBoxInterface{
 
   /**
    * add a pointer to a food object into this box add at back of the list
+   * @param food the FoodInterface object to add to the FoodBox
+   * @throws IllegalArgumentException if the food parameter is null
    */
   @Override
   public void addFood(FoodInterface food) {
-    //System.out.println("added: " + food.getFoodName());
+    if (food==null) {throw new IllegalArgumentException();}
     this.foodBox.add(food);
   }
 
@@ -33,7 +40,7 @@ public class FoodBox implements FoodBoxInterface{
   public FoodInterface provideFood(String foodName) {
     if (foodBox.size()==0) {
       System.out.println("根本没有食物");
-      return null;
+      throw new IllegalArgumentException("There is no food in the box.");
     }
     for (FoodInterface food : foodBox) {
       if (food.getFoodName()==foodName && food.getFoodBoolean()) {
@@ -64,7 +71,7 @@ public class FoodBox implements FoodBoxInterface{
   public FoodInterface getFood(int index) {
     if (foodBox.size()-1 < index) {
       System.out.println("超出index范围");
-      return null;
+      throw new IllegalArgumentException();
     }
     return foodBox.get(index);
   }
@@ -78,7 +85,7 @@ public class FoodBox implements FoodBoxInterface{
   public FoodInterface getFrontFood() {
     if (foodBox.size()<=0) {
       System.out.println("空盒子");
-      return null;
+      throw new IllegalArgumentException();
     }
     FoodInterface returnFood = foodBox.get(0);
     foodBox.remove(0);
@@ -107,6 +114,9 @@ public class FoodBox implements FoodBoxInterface{
     return foodBox;
   }
 
+  /**
+   * map all food to long list of String
+   */
   public List<String> getAllListOfFoodName() {
     List<String> foodNames = new ArrayList<>();
     for (FoodInterface food : foodBox) {
@@ -115,6 +125,11 @@ public class FoodBox implements FoodBoxInterface{
     return foodNames;
   }
 
+  /**
+   * make the string list a set
+   * 只有不重复部分，为了方便生成JButton
+   * @return
+   */
   public List<String> getDistinctListOfFoodName() {
     Set<String> distinctFoodNames = new HashSet<>();
     for (FoodInterface food : foodBox) {

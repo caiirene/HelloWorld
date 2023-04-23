@@ -350,7 +350,7 @@ public class PetImpl implements PetInterface {
 
   /**
    * 汇总自身所有状态，讲出自己几岁了，很高兴认识你 汇报自己获得了几个“梦”，说梦被记录在文件中了
-   *
+   * last word include how old now, how many dreams collected, and say love
    * @return
    */
   @Override
