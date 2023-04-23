@@ -15,7 +15,7 @@ public abstract class AbstractFood implements FoodInterface {
   protected int foodValue;
   protected int realFoodValue;
   protected int spoilRate;
-  protected boolean notRotten;
+  public boolean notRotten;
   protected FoodType type;
   protected String foodName;
 

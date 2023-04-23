@@ -67,9 +67,8 @@ public class PetImpl implements PetInterface {
    * @param record
    */
   public PetImpl(File record) {
-
+    // NO TIME
   }
-
 
   /**
    * get the name of pet
@@ -83,11 +82,19 @@ public class PetImpl implements PetInterface {
 
   /**
    * rename the pet
-   *
+   * @throws if null pointer as parameter, IllegalArgumentException
    * @param name
    */
   @Override
-  public void setName(String name) {this.name = name;}
+  public void setName(String name) {
+    if (name==null) {throw new IllegalArgumentException();}
+    this.name = name;
+  }
+
+  @Override
+  public void setHealth(int health) {
+    this.health = health;
+  }
 
   /**
    * get the age
@@ -108,6 +115,7 @@ public class PetImpl implements PetInterface {
    */
   @Override
   public void setAge(int age) {
+    if (age<0) {throw new IllegalArgumentException();}
     this.age = age;
     LocalDate currentDate = LocalDate.now();
     this.birthDay = currentDate.minusDays(this.age);
@@ -129,7 +137,12 @@ public class PetImpl implements PetInterface {
    * @param hunger
    */
   @Override
-  public void setHunger(int hunger) { this.hunger = hunger; }
+  public void setHunger(int hunger) {
+    if (hunger<=0) {this.hunger = 1;}
+    else {
+      this.hunger = hunger;
+    }
+  }
   @Override
   public int getHappiness() {return happiness;}
 
@@ -137,9 +150,11 @@ public class PetImpl implements PetInterface {
    * eat a food object from food box or whatever you have, and bring up the hunger number
    *
    * @param food
+   * @throws IllegalArgumentException if null pointer
    */
   @Override
   public void eat(FoodInterface food) {
+    if (food==null) {throw new IllegalArgumentException();}
     switch (food.getFoodType()) {
       case POISON:
         int oldHealth = health;
@@ -166,7 +181,7 @@ public class PetImpl implements PetInterface {
 
   /**
    * play with a toy object from toy box or whatever you have and bring up the happiness
-   *
+   * NO TIME, NO TEST
    * @param toy
    */
   @Override
@@ -187,7 +202,11 @@ public class PetImpl implements PetInterface {
     support.firePropertyChange("happinessChange", oldHappiness, this.happiness);
   }
 
-  public void recoverFreshness() {
+  /**
+   * 这个是对应了上面的方法而写
+   * 上面消耗了对玩具的新鲜感，同时也要增加其余玩具的新鲜感
+   */
+  private void recoverFreshness() {
     for (String toyName : toyFreshness.keySet()) {
       int freshness = toyFreshness.get(toyName);
       toyFreshness.put(toyName, Math.min(freshness + 10, 100)); // 恢复新鲜程度，最高为100
@@ -214,7 +233,7 @@ public class PetImpl implements PetInterface {
 
   /**
    * 这个方法直接接收一个字符串，然后使用格式，添加到dreamList中
-   *
+   * we do allow empty string here
    * @param dream
    */
   @Override
@@ -250,6 +269,11 @@ public class PetImpl implements PetInterface {
     return health;
   }
 
+  @Override
+  public List<String> getDreams() {
+    return dreams;
+  }
+
   /**
    * return a toy box that the pet have a pet can only have at most one toy box
    *
@@ -262,7 +286,7 @@ public class PetImpl implements PetInterface {
 
   /**
    * give the pet a toy box if the pet already have a toy box, we just add all toys into the box
-   *
+   * we do allow null pointer here
    * @param toyBox
    */
   @Override
@@ -367,8 +391,6 @@ public class PetImpl implements PetInterface {
     return lastWord;
   }
 
-
-
   /**
    * 宠物如果不处在sleep状态 根据activationRate降低health
    */
@@ -427,27 +449,38 @@ public class PetImpl implements PetInterface {
       listener.propertyChange(new PropertyChangeEvent(this, "dead", oldDead, liveOrDead));
     }
   }
+
+  /**
+   * a getter for controller to register for listener
+   * @return PropertyChangeSupport support
+   */
   public PropertyChangeSupport getSupport(){return support;}
 
 
-  public void loseHealthEmergency() {
-    int oldHealth = this.health;
-    health = Math.max(health - 10, 0);
-    System.out.println("lose health emergency, now health = " + health);
-    checkDeath();
-  }
-
-
+  /**
+   * it is a temp method for project
+   * because I have no time for toy
+   */
   public void increaseHappiness() {
     int oldHappiness = this.happiness;
     happiness = Math.min(happiness + 10, 100);
     support.firePropertyChange("happiness", oldHappiness, this.happiness);
   }
 
+  /**
+   * this is a temp method for project
+   * if pet has no food to eat, but I still need something to demo
+   * just eatApple()
+   */
   public void eatApple() {
     System.out.println("eat apple!!!!!!!!!!!!");
   }
 
+  /**
+   * 首先写入临终遗言
+   * 然后把dream list逐条写入
+   * 输出位置在桌面，绝对路径，所以只能我自己的电脑使用
+   */
   public void generateTxtFileFromDreams() {
     System.out.println("生成txt");
     File outputFile = new File("C:\\Users\\asus\\Desktop\\dreams.txt");
@@ -470,5 +503,9 @@ public class PetImpl implements PetInterface {
         + "They are the most precious treasures of mine.\nI have kept all of them for you.\n"
         + "I love you. Goodbye.";
     return lastWord;
+  }
+
+  public void addPropertyChangeListener(PropertyChangeListener listener) {
+    support.addPropertyChangeListener(listener);
   }
 }

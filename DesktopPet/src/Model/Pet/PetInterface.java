@@ -2,7 +2,9 @@ package Model.Pet;
 
 import Model.Food.*;
 import Model.Toy.*;
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.List;
 
 
 /**
@@ -170,15 +172,50 @@ public interface PetInterface {
    */
   void checkDeath();
 
+  /**
+   * it is a temp method for project
+   * because I have no time for toy
+   */
   void increaseHappiness();
 
+  /**
+   * this is a temp method for project
+   * if pet has no food to eat, but I still need something to demo
+   * just eatApple()
+   */
   void eatApple();
 
+  /**
+   * 首先写入临终遗言
+   * 然后把dream list逐条写入
+   * 输出位置在桌面，绝对路径，所以只能我自己的电脑使用
+   */
   void generateTxtFileFromDreams();
 
+  /**
+   * a getter for controller to register for listener
+   * @return PropertyChangeSupport support
+   */
   PropertyChangeSupport getSupport();
 
-  void loseHealthEmergency();
 
+  /**
+   * just a getter for int happiness
+   * @return int happiness
+   */
   int getHappiness();
+
+  /**
+   * just a setter for test
+   * @param health
+   */
+  void setHealth(int health);
+
+  void addPropertyChangeListener(PropertyChangeListener propertyChangeListener);
+
+  /**
+   * test专用
+   * @return
+   */
+  List<String> getDreams();
 }

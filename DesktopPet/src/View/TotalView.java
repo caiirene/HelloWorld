@@ -36,8 +36,23 @@ public class TotalView {
   public BasicPenal getBasicPenal() {
     return basicPenal;
   }
+
+  /**
+   * 这个方法在宠物需要说话时调用。
+   * 这个方法接收一个string作为参数，然后修改JLabel的文字显示，
+   * 所以，JLabel对象是固定的，只是调用此方法来修改文字，可以避免生成多个JLabel导致前一个label没删除，使得文字重叠
+   * @param String speach
+   */
   public void showSpeach(String speach) {
     //System.out.println(speach);
     petSpeechLabel.setText(speach);
+  }
+
+  /**
+   * for test only
+   * @return
+   */
+  public JLabel getPetSpeechLabel() {
+    return petSpeechLabel;
   }
 }

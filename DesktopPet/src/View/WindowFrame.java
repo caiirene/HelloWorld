@@ -8,6 +8,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -98,4 +99,18 @@ public class WindowFrame extends JFrame {
     }
   }
 
+  /**
+   * for test only
+   * @return
+   */
+  public JLabel getPetLabel() {
+    return petLabel;
+  }
+
+  /**
+   * for test only
+   */
+  public void resetGif() {
+    setPetGif(normalGifPath);
+  }
 }
