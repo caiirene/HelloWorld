@@ -19,6 +19,9 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * test for pet
+ */
 public class PetImplTest {
   private PetInterface pet;
 
@@ -27,6 +30,9 @@ public class PetImplTest {
     pet = new PetImpl();
   }
 
+  /**
+   * getName method test
+   */
   @Test
   public void testName() {
     String expectedName = "TestPet";
@@ -34,11 +40,18 @@ public class PetImplTest {
     assertEquals(expectedName, pet.getName());
   }
 
+  /**
+   * setName method with null parameter
+   * should throw exceptions
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testNameNull() {
     pet.setName(null);
   }
 
+  /**
+   * test setAge then getAge
+   */
   @Test
   public void testAge() {
     int expectedAge = 10;
@@ -46,11 +59,18 @@ public class PetImplTest {
     assertEquals(expectedAge, pet.getAge());
   }
 
+  /**
+   * since we don't allow negative age,
+   * exception should be thrown
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testAgeNegative() {
     pet.setAge(-1);
   }
 
+  /**
+   * test setter and getter for hunger
+   */
   @Test
   public void testHunger() {
     int expectedHunger = 50;
@@ -58,6 +78,9 @@ public class PetImplTest {
     assertEquals(expectedHunger, pet.getHunger());
   }
 
+  /**
+   * test eat good food
+   */
   @Test
   public void testEat() {
     int initialHunger = pet.getHunger();
@@ -66,31 +89,37 @@ public class PetImplTest {
     assertEquals(initialHunger + food.getRealFoodValue(), pet.getHunger());
   }
 
+  /**
+   * test eat with null para
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testEatNull() {
     pet.eat(null);
   }
 
 
+  /**
+   * test getter method for hunger
+   */
   @Test
   public void testGetHunger() {
     int initialHunger = pet.getHunger();
     assertEquals("Initial hunger should be 100.", 100, initialHunger);
   }
 
-  @Test
-  public void testSetHunger() {
-    int newHunger = 50;
-    pet.setHunger(newHunger);
-    int updatedHunger = pet.getHunger();
-    assertEquals("Hunger should be updated to 50.", 50, updatedHunger);
-  }
-
+  /**
+   * test for getHappiness 方法
+   */
   @Test
   public void testGetHappiness() {
     int initialHappiness = pet.getHappiness();
     assertEquals("Initial happiness should be 100.", 100, initialHappiness);
   }
+
+  /**
+   * test for addDream()
+   * the dream added should be formatted
+   */
   @Test
   public void testAddDream() {
     String dream = "I want to be a super pet!";
@@ -109,19 +138,32 @@ public class PetImplTest {
     assertTrue("Dream list should contain the formatted dream.", foundFormattedDream);
   }
 
+  /**
+   * test for GetDeathStatus method
+   */
   @Test
   public void testGetDeathStatus() {
     boolean initialDeathStatus = pet.getDeathStatus();
     assertFalse("Initial death status should be false.", initialDeathStatus);
+    pet.setHealth(0);
+    pet.checkDeath();
+    initialDeathStatus = pet.getDeathStatus();
+    assertTrue("Initial death status should be false.", initialDeathStatus);
   }
 
+  /**
+   * test for getHealth() method
+   */
   @Test
   public void testGetHealth() {
     int initialHealth = pet.getHealth();
     assertEquals("Initial health should be 100.", 100, initialHealth);
   }
 
-
+  /**
+   * add all possible string to list
+   * then test speakRandomly method
+   */
   @Test
   public void testSpeakRandomly() {
     Set<String> expectedResponses = new HashSet<>(Arrays.asList(
@@ -138,6 +180,10 @@ public class PetImplTest {
     }
   }
 
+  /**
+   * similar to last test
+   * test on sayThankYou() method
+   */
   @Test
   public void testSayThankYou() {
     Set<String> possibleResponses = new HashSet<>();
@@ -150,18 +196,27 @@ public class PetImplTest {
     assertTrue("Response should be one of the possible responses.", possibleResponses.contains(response));
   }
 
+  /**
+   * test sayHungry method
+   */
   @Test
   public void testSayHungry() {
     String response = pet.sayHungry();
     assertEquals("Response should be 'I am little bit hungry now...'", "I am little bit hungry now...", response);
   }
 
+  /**
+   * test sayLonely method
+   */
   @Test
   public void testSayLonely() {
     String response = pet.sayLonely();
     assertEquals("Response should be 'Would you mind... play with me\n for a while, just a little while?'", "Would you mind... play with me\n for a while, just a little while?", response);
   }
 
+  /**
+   * test sayLastWord
+   */
   @Test
   public void testSayTheLastWord() {
     pet.setAge(10);
@@ -181,6 +236,9 @@ public class PetImplTest {
     assertEquals("Response should match the expected string.", expected, response);
   }
 
+  /**
+   * testLoseHealth_GetTiredWhileTimePass
+   */
   @Test
   public void testLoseHealth_GetTiredWhileTimePass() {
     pet.setHealth(50);
@@ -188,6 +246,9 @@ public class PetImplTest {
     assertEquals("Health should be reduced by 15.", 35, pet.getHealth());
   }
 
+  /**
+   * testLoseHungerWhileTimePass
+   */
   @Test
   public void testLoseHungerWhileTimePass() {
     pet.setHunger(80);
@@ -195,6 +256,9 @@ public class PetImplTest {
     assertEquals("Hunger should be reduced by 25.", 55, pet.getHunger());
   }
 
+  /**
+   * test for checkDeath method
+   */
   @Test
   public void testCheckDeath() {
     pet.setHealth(10);
