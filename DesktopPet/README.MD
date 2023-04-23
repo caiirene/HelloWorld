@@ -1,7 +1,7 @@
 HOW TO START:
   -- src->View->Main.java
   -- the path to gif are absolute path, so you need to change them manuly [file: src->View->WindowFrame.java]
-  -- the path to sotre txt file is absolute path as well, please change them before use [file: src->Model->Pet->PetImpl.java]
+  -- the path to sotre txt file is absolute path as well, please change them before use [file: src->Model->Pet->PetImpl.java->(nearly the end part, in generateTxtFileFromDreams method)]
 
 WHAT IS INCLUDED:
   -- GUI for basic features
