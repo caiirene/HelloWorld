@@ -5,12 +5,13 @@ HOW TO START:
 
 WHAT IS INCLUDED:
   -- GUI for basic features
-  -- choose food from what you have by click "feed"
+  -- choose food from what you have by clicking "feed"
   -- food will be generated automaticly, but sometime unstable
   -- "play" with pet
-  -- toys to play has not ready yet
+  -- toys to play with are not ready yet
   -- record your dream like diary by click "let's dream"
-  -- generate txt file of your dreams
+  -- generate txt file of your dreams after pet die
+  -- pet will say "I love you"
 
 PLEASE ENJOY:
   -- Pet can die easily
