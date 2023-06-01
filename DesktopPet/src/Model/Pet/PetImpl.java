@@ -247,6 +247,8 @@ public class PetImpl implements PetInterface {
 
     String formattedDream = formattedDate + " " + formattedTime + "，你曾对我说：\n" + dream + "\n\n";
     dreams.add(formattedDream);
+    health += 10;
+    this.checkDeath();
   }
 
   /**
@@ -397,8 +399,8 @@ public class PetImpl implements PetInterface {
   @Override
   public void loseHealth_GetTiredWhileTimePass() {
     int oldHealth = this.health;
-    health = Math.max(health - 15, 0);
-    System.out.println("health -15, now health = "+ this.getHealth());
+    health = Math.max(health - 10, 0);
+    System.out.println("health -10, now health = "+ this.getHealth());
     this.checkDeath();
     //support.firePropertyChange("healthChange", oldHealth, this.health);
   }
@@ -411,8 +413,8 @@ public class PetImpl implements PetInterface {
     int oldHunger = this.hunger;
     // 在这里编写逻辑以根据时间流逝增加宠物的饥饿感
     // 例如：hunger = Math.max(hunger - 1, 0);
-    //System.out.println("hunger-25 in pet");
-    hunger = Math.max(hunger - 25, 0);
+    //System.out.println("hunger-5 in pet");
+    hunger = Math.max(hunger - hungryRate, 0);
     System.out.println("loss hunger normally, " + this.hunger);
 
     support.firePropertyChange("hungerChange", oldHunger, this.hunger);
@@ -501,7 +503,7 @@ public class PetImpl implements PetInterface {
         + "During these "+getAge()+" days,\nyou told me "+dreams.size()+" dreams. \n"
         + "And those dream accompanied me over these "+getAge()+" nights.\n"
         + "They are the most precious treasures of mine.\nI have kept all of them for you.\n"
-        + "I love you. Goodbye.";
+        + "I love you. Goodbye.\n";
     return lastWord;
   }
 

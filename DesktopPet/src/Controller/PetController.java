@@ -69,19 +69,19 @@ public class PetController implements ActionListener, PropertyChangeListener {
     foodGeneratorTimer.start();
 
     //normal hunger time 普通饥饿时间
-    hungerTimer = new HungerTimer(30000,pet);
+    hungerTimer = new HungerTimer(30000,pet); //30秒
     hungerTimer.start();
     //normal speak time
-    speakRandomlyTimer = new SpeakTimer(5000,pet,view);
+    speakRandomlyTimer = new SpeakTimer(5000,pet,view); //首次5秒
     speakRandomlyTimer.start();
     //normal health time
-    tiredTimer = new HealthTimer(60000,pet);
+    tiredTimer = new HealthTimer(60000,pet); //60秒
     tiredTimer.start();
     //normal happiness time
-    happinessTimer = new HappinessTimer(60000,pet);
+    happinessTimer = new HappinessTimer(60000,pet); //60秒
     happinessTimer.start();
     //create a emergency timer, but not start yet
-    emergencyLoseHealthTimer = new HealthTimer(5000, pet);
+    emergencyLoseHealthTimer = new HealthTimer(2000, pet); //2秒
 
     //这个监测死亡的timer比较特殊，直接放在controller中进行定义
     createCheckDeathTimer();

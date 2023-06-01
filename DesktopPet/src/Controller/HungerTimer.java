@@ -22,17 +22,14 @@ public class HungerTimer extends Timer {
    * @param pet       the PetInterface object whose hunger will be decreased over time
    */
   public HungerTimer(int interval, PetInterface pet) {
-    //interval = interval*1000;
+
     super(interval, null);
     this.pet = pet;
     addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         pet.loseHungerWhileTimePass();
-        //System.out.println("hunger timer");
       }
     });
-    //start();
   }
-
 }
